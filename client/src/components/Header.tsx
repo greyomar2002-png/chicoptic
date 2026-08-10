@@ -4,7 +4,7 @@
  * anthracite, gold hairline on scroll.
  */
 import { useEffect, useState } from "react";
-import { Phone } from "lucide-react";
+import { CalendarCheck, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const LOGO = "/manus-storage/logo-co_2cd9bf7c.png";
@@ -62,10 +62,10 @@ export default function Header() {
             </a>
           ))}
           <a
-            href="tel:+21625904141"
+            href="#reservation"
             className="flex items-center gap-2 border border-gold/60 px-4 py-2 text-[12px] tracking-[0.18em] uppercase text-gold hover:bg-gold hover:text-white transition-colors duration-200">
-            <Phone className="h-3.5 w-3.5" />
-            +216 25 904 141
+            <CalendarCheck className="h-3.5 w-3.5" />
+            Réserver
           </a>
         </nav>
 
@@ -108,10 +108,10 @@ export default function Header() {
             </a>
           ))}
           <a
-            href="tel:+21625904141"
+            href="#reservation"
             className="text-gold text-sm tracking-[0.18em] uppercase flex items-center gap-2">
-            <Phone className="h-4 w-4" />
-            +216 25 904 141
+            <CalendarCheck className="h-4 w-4" />
+            Réserver un examen
           </a>
         </nav>
       )}

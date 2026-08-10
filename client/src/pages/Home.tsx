@@ -11,6 +11,7 @@ import Collections from "@/components/sections/Collections";
 import Services from "@/components/sections/Services";
 import About from "@/components/sections/About";
 import Reputation from "@/components/sections/Reputation";
+import Booking from "@/components/sections/Booking";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/Footer";
 
@@ -24,6 +25,7 @@ export default function Home() {
         <Services />
         <About />
         <Reputation />
+        <Booking />
         <Contact />
       </main>
       <Footer />
