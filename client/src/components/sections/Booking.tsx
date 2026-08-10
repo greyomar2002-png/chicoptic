@@ -2,174 +2,24 @@
  * CHIC OPTIC — Réservation ("Galerie Blanche")
  * Style: warm parchment background with crème interlude, gold-framed form
  * panel with corner ornaments, gold primary button, letter-spaced labels.
- * Booking flow: name, phone, calendar date picker, morning/afternoon time
- * grid — submitted via mailto to the boutique and confirmed with an
+ * Booking flow: name and phone only — the boutique calls back to agree on
+ * the appointment — submitted via mailto to the boutique and confirmed with an
  * elegant success state.
  */
-import { useMemo, useState } from "react";
-import { CalendarCheck, Check, ChevronLeft, ChevronRight, Clock, Phone } from "lucide-react";
+import { useState } from "react";
+import { CalendarCheck, Check, Clock, Phone } from "lucide-react";
 import { useReveal } from "@/pages/Home";
 import { toast } from "sonner";
 
-const TIME_SLOTS = [
-  "9h00",
-  "9h30",
-  "10h00",
-  "10h30",
-  "11h00",
-  "11h30",
-  "12h00",
-  "14h00",
-  "14h30",
-  "15h00",
-  "15h30",
-  "16h00",
-  "16h30",
-  "17h00",
-  "17h30",
-];
-
 const BOOKING_PHONE = "+216 25 904 141";
-
-const MONTH_FR = [
-  "Janvier",
-  "Février",
-  "Mars",
-  "Avril",
-  "Mai",
-  "Juin",
-  "Juillet",
-  "Août",
-  "Septembre",
-  "Octobre",
-  "Novembre",
-  "Décembre",
-];
-const WEEKDAY_FR = ["L", "M", "M", "J", "V", "S", "D"];
-
-function dateKey(d: Date): string {
-  const y = d.getFullYear();
-  const m = String(d.getMonth() + 1).padStart(2, "0");
-  const day = String(d.getDate()).padStart(2, "0");
-  return `${y}-${m}-${day}`;
-}
-
-function CalendarPicker({
-  date,
-  onChange,
-}: {
-  date: string;
-  onChange: (key: string) => void;
-}) {
-  const today = useMemo(() => new Date(), []);
-  const todayKey = useMemo(() => dateKey(today), [today]);
-  const [view, setView] = useState(() => {
-    if (date) {
-      const [y, m] = date.split("-").map(Number);
-      return { year: y, month: m - 1 };
-    }
-    return { year: today.getFullYear(), month: today.getMonth() };
-  });
-
-  // Clamp view so the user cannot navigate before the current month
-  const canPrev = view.year > today.getFullYear() || view.month > today.getMonth();
-
-  const days: { key: string; day: number; available: boolean; inView: boolean }[] = [];
-  const first = new Date(view.year, view.month, 1);
-  const startWeekday = (first.getDay() + 6) % 7; // Monday = 0
-  for (let i = 0; i < startWeekday; i++) {
-    const d = new Date(view.year, view.month, -startWeekday + i + 1);
-    days.push({ key: dateKey(d), day: d.getDate(), available: false, inView: false });
-  }
-  const last = new Date(view.year, view.month + 1, 0);
-  for (let day = 1; day <= last.getDate(); day++) {
-    const d = new Date(view.year, view.month, day);
-    const dk = dateKey(d);
-    days.push({ key: dk, day, available: dk >= todayKey, inView: true });
-  }
-  const needExtra = 42 - days.length;
-  for (let i = 0; i < needExtra; i++) {
-    const d = new Date(view.year, view.month + 1, i + 1);
-    days.push({ key: dateKey(d), day: d.getDate(), available: dateKey(d) >= todayKey, inView: false });
-  }
-
-  const prev = () => {
-    if (!canPrev) return;
-    setView((v) => (v.month === 0 ? { year: v.year - 1, month: 11 } : { year: v.year, month: v.month - 1 }));
-  };
-  const next = () => setView((v) => (v.month === 11 ? { year: v.year + 1, month: 0 } : { year: v.year, month: v.month + 1 }));
-
-  return (
-    <div className="select-none border border-gold/30 bg-background p-5 md:p-6">
-      <div className="flex items-center justify-between">
-        <p className="font-display text-lg text-foreground" style={{ fontVariantNumeric: "oldstyle-nums" }}>
-          {MONTH_FR[view.month]}{" "}
-          <span className="text-gold" style={{ fontVariantNumeric: "oldstyle-nums" }}>
-            {view.year}
-          </span>
-        </p>
-        <div className="flex items-center gap-1">
-          <button
-            type="button"
-            aria-label="Mois précédent"
-            onClick={prev}
-            disabled={!canPrev}
-            className="flex h-9 w-9 items-center justify-center border border-gold/40 text-gold transition-colors duration-200 hover:border-gold hover:bg-gold/10 disabled:opacity-30 disabled:cursor-not-allowed">
-            <ChevronLeft className="h-4 w-4" />
-          </button>
-          <button
-            type="button"
-            aria-label="Mois suivant"
-            onClick={next}
-            className="flex h-9 w-9 items-center justify-center border border-gold/40 text-gold transition-colors duration-200 hover:border-gold hover:bg-gold/10">
-            <ChevronRight className="h-4 w-4" />
-          </button>
-        </div>
-      </div>
-
-      <div className="mt-5 grid grid-cols-7 gap-1 text-center">
-        {WEEKDAY_FR.map((w, wi) => (
-          <p key={`${w}-${wi}`} className="label-luxe !text-[0.55rem] text-foreground/50 py-1">
-            {w}
-          </p>
-        ))}
-        {days.map((d, i) => (
-          <button
-            key={d.key}
-            type="button"
-            disabled={!d.available}
-            onClick={() => onChange(d.key)}
-            className={
-              d.inView
-                ? d.key === date
-                  ? "border border-gold bg-gold py-2 text-[13px] text-white"
-                  : "py-2 text-[13px] text-foreground/75 transition-colors duration-200 hover:border-gold/60 hover:text-gold"
-                : "py-2 text-[13px] text-foreground/25"
-            }>
-            {d.day}
-          </button>
-        ))}
-      </div>
-
-      {date && (
-        <p className="mt-4 border-t border-gold/30 pt-3 text-center text-foreground/60 text-[13px] font-light">
-          Date choisie —{" "}
-          <span className="text-gold">{new Date(date + "T12:00:00").toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long", year: "numeric" })}</span>
-        </p>
-      )}
-    </div>
-  );
-}
 
 export default function Booking() {
   const ref = useReveal();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [date, setDate] = useState("");
-  const [slot, setSlot] = useState("");
   const [sent, setSent] = useState(false);
 
-  const isValid = name.trim().length > 1 && phone.trim().length >= 8 && date && slot;
+  const isValid = name.trim().length > 1 && phone.trim().length >= 8;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -179,7 +29,7 @@ export default function Booking() {
     }
     const subject = encodeURIComponent("Demande de rendez-vous — Examen de la vue");
     const body = encodeURIComponent(
-      `Bonjour,\n\nJe souhaite réserver un examen de la vue.\n\nNom : ${name.trim()}\nTéléphone : ${phone.trim()}\nDate souhaitée : ${date}\nCréneau : ${slot}\n\nMerci de bien vouloir me confirmer la disponibilité.\n`,
+      `Bonjour,\n\nJe souhaite réserver un examen de la vue.\n\nNom : ${name.trim()}\nTéléphone : ${phone.trim()}\n\nMerci de bien vouloir me contacter pour convenir d'un rendez-vous.\n`,
     );
     window.location.href = `mailto:contact@chicoptic.tn?subject=${subject}&body=${body}`;
     setSent(true);
@@ -205,9 +55,9 @@ export default function Booking() {
               examen de <em className="text-gold">la vue.</em>
             </h2>
           </div>
-          <p className="reveal max-w-md text-foreground/65 text-base font-light leading-[1.95]">
-            Choisissez votre date sur le calendrier et votre créneau — la maison
-            vous contactera pour confirmer le rendez-vous. Un entretien
+                  <p className="reveal max-w-md text-foreground/65 text-base font-light leading-[1.95]">
+            Laissez vos coordonnées — la maison vous contactera pour convenir
+            ensemble de la date et du créneau. Un entretien
             personnalisé, sans attente, dans la discrétion de la résidence Phénix.
           </p>
         </div>
@@ -235,8 +85,6 @@ export default function Booking() {
                     setSent(false);
                     setName("");
                     setPhone("");
-                    setDate("");
-                    setSlot("");
                   }}
                   className="mt-8 border-b border-gold/60 pb-1 text-gold text-[12px] tracking-[0.22em] uppercase hover:border-gold transition-colors">
                   Nouvelle demande
@@ -266,52 +114,7 @@ export default function Booking() {
                   </div>
                 </div>
 
-                {/* Calendar date picker */}
-                <div className="mt-10">
-                  <p className="label-luxe">Date souhaitée</p>
-                  <div className="mt-5 max-w-md">
-                    <CalendarPicker date={date} onChange={setDate} />
-                  </div>
-                </div>
-
-                {/* Time slot grid, split morning / afternoon */}
-                <div className="mt-10">
-                  <p className="label-luxe">Créneau horaire</p>
-                  <div className="mt-5 space-y-4">
-                    <div className="flex flex-wrap gap-3">
-                      {TIME_SLOTS.filter((t) => Number(t.split("h")[0]) < 13).map((t) => (
-                        <button
-                          key={t}
-                          type="button"
-                          onClick={() => setSlot(t)}
-                          className={
-                            slot === t
-                              ? "border border-gold bg-gold px-5 py-3 text-white text-[13px] tracking-[0.12em] uppercase transition-colors duration-200"
-                              : "border border-gold/40 bg-transparent px-5 py-3 text-foreground/75 text-[13px] tracking-[0.12em] uppercase hover:border-gold hover:text-gold transition-colors duration-200"
-                          }>
-                          {t}
-                        </button>
-                      ))}
-                    </div>
-                    <div className="flex flex-wrap gap-3 border-t border-gold/25 pt-4">
-                      {TIME_SLOTS.filter((t) => Number(t.split("h")[0]) >= 13).map((t) => (
-                        <button
-                          key={t}
-                          type="button"
-                          onClick={() => setSlot(t)}
-                          className={
-                            slot === t
-                              ? "border border-gold bg-gold px-5 py-3 text-white text-[13px] tracking-[0.12em] uppercase transition-colors duration-200"
-                              : "border border-gold/40 bg-transparent px-5 py-3 text-foreground/75 text-[13px] tracking-[0.12em] uppercase hover:border-gold hover:text-gold transition-colors duration-200"
-                          }>
-                          {t}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-8 flex items-center justify-between gap-6 flex-wrap">
+                <div className="mt-10 flex items-center justify-between gap-6 flex-wrap">
                   <a
                     href={`tel:${BOOKING_PHONE.replace(/\s/g, "")}`}
                     className="flex items-center gap-3 text-foreground/70 hover:text-gold text-[13px] font-light transition-colors">
@@ -337,8 +140,8 @@ export default function Booking() {
                 {
                   icon: CalendarCheck,
                   step: "Étape 01",
-                  title: "Choisissez",
-                  desc: "Sélectionnez votre date sur le calendrier puis le créneau qui vous convient.",
+                  title: "Demandez",
+                  desc: "Laissez vos coordonnées — la maison vous rappelle pour convenir de votre créneau.",
                 },
                 {
                   icon: Phone,
