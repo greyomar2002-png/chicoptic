@@ -16,7 +16,7 @@ export default function Contact() {
   return (
     <section
       ref={ref}
-      className="relative overflow-hidden bg-[oklch(0.915_0.012_85)] text-foreground py-28 md:py-40"
+      className="relative overflow-hidden bg-[oklch(0.87_0.016_85)] text-foreground py-28 md:py-40"
       id="contact">
       <img
         src={LOGO}
@@ -83,7 +83,7 @@ export default function Contact() {
             ].map((c) => (
               <div
                 key={c.title}
-                className="group relative bg-background p-8 transition-colors duration-300 hover:bg-[oklch(0.89_0.015_85)]">
+                className="group relative bg-background p-8 transition-colors duration-300 hover:bg-[oklch(0.85_0.018_85)]">
                 <div className="absolute top-3 left-3 h-4 w-4 border-t border-l border-gold/40 pointer-events-none transition-colors duration-500 group-hover:border-gold" />
                 <div className="flex items-center gap-4">
                   <c.icon className="h-5 w-5 text-gold" />

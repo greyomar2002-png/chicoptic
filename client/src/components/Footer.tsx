@@ -9,7 +9,7 @@ const LOGO = "/manus-storage/logo-co_2cd9bf7c.png";
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-[oklch(0.87_0.018_85)] text-foreground/70 py-16">
+    <footer className="relative overflow-hidden bg-[oklch(0.83_0.02_85)] text-foreground/70 py-16">
       <div className="container relative z-10">
         <div className="flex flex-col items-center text-center">
           <div className="gold-frame flex items-center gap-4 px-6 py-3">
