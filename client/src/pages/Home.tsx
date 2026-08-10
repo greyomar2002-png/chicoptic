@@ -1,25 +1,56 @@
-import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
-import { Streamdown } from 'streamdown';
-
-/**
- * All content in this page are only for example, replace with your own feature implementation
- * When building pages, remember your instructions in Frontend Best Practices, Design Guide and Common Pitfalls
+/*
+ * CHIC OPTIC — Home (single-page)
+ * Style: "Or & Velours" — ebony / champagne-gold / ivory, Cormorant Garamond
+ * display + Jost body, gold hairlines with corner ornaments, letter-spaced
+ * uppercase labels, editorial asymmetric layouts, slow fade+rise reveals.
  */
-export default function Home() {
-  // If theme is switchable in App.tsx, we can implement theme toggling like this:
-  // const { theme, toggleTheme } = useTheme();
+import { useEffect, useRef } from "react";
+import Header from "@/components/Header";
+import Hero from "@/components/sections/Hero";
+import Collections from "@/components/sections/Collections";
+import Services from "@/components/sections/Services";
+import About from "@/components/sections/About";
+import Reputation from "@/components/sections/Reputation";
+import Contact from "@/components/sections/Contact";
+import Footer from "@/components/Footer";
 
+export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen bg-background text-foreground">
+      <Header />
       <main>
-        {/* Example: lucide-react for icons */}
-        <Loader2 className="animate-spin" />
-        Example Page
-        {/* Example: Streamdown for markdown rendering */}
-        <Streamdown>Any **markdown** content</Streamdown>
-        <Button variant="default">Example Button</Button>
+        <Hero />
+        <Collections />
+        <Services />
+        <About />
+        <Reputation />
+        <Contact />
       </main>
+      <Footer />
     </div>
   );
+}
+
+/** Reveal-on-scroll observer */
+export function useReveal() {
+  const ref = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    const root = ref.current;
+    if (!root) return;
+    const els = root.querySelectorAll(".reveal");
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-visible");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12 },
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+  return ref;
 }
