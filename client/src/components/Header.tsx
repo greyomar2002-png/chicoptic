@@ -13,6 +13,7 @@ const NAV = [
   { href: "#collections", label: "Collections" },
   { href: "#services", label: "Services" },
   { href: "#maison", label: "La Maison" },
+  { href: "#marques", label: "Les Marques" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -42,8 +43,8 @@ export default function Header() {
             alt="Monogramme Chic Optic"
             className="h-11 w-11 object-contain"
           />
-          <span className="flex flex-col leading-none">
-            <span className="font-display text-xl tracking-[0.25em] text-foreground/90 font-medium">
+          <span className="flex flex-col leading-none shrink-0">
+            <span className="whitespace-nowrap font-display text-lg tracking-[0.18em] text-foreground/90 font-medium">
               CHIC OPTIC
             </span>
             <span className="label-luxe mt-1 text-[0.55rem] text-gold">
