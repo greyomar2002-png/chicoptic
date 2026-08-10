@@ -1,12 +1,13 @@
 /*
  * CHIC OPTIC — Réservation ("Galerie Blanche")
- * Style: white gallery background with crème interlude, gold-framed form
+ * Style: warm parchment background with crème interlude, gold-framed form
  * panel with corner ornaments, gold primary button, letter-spaced labels.
- * Booking flow: name, phone, date, time slot — submitted via mailto to the
- * boutique and confirmed with an elegant success state.
+ * Booking flow: name, phone, calendar date picker, morning/afternoon time
+ * grid — submitted via mailto to the boutique and confirmed with an
+ * elegant success state.
  */
 import { useMemo, useState } from "react";
-import { CalendarCheck, Check, Clock, Phone } from "lucide-react";
+import { CalendarCheck, Check, ChevronLeft, ChevronRight, Clock, Phone } from "lucide-react";
 import { useReveal } from "@/pages/Home";
 import { toast } from "sonner";
 
@@ -30,9 +31,134 @@ const TIME_SLOTS = [
 
 const BOOKING_PHONE = "+216 25 904 141";
 
-function todayStr(): string {
-  const d = new Date();
-  return d.toISOString().slice(0, 10);
+const MONTH_FR = [
+  "Janvier",
+  "Février",
+  "Mars",
+  "Avril",
+  "Mai",
+  "Juin",
+  "Juillet",
+  "Août",
+  "Septembre",
+  "Octobre",
+  "Novembre",
+  "Décembre",
+];
+const WEEKDAY_FR = ["L", "M", "M", "J", "V", "S", "D"];
+
+function dateKey(d: Date): string {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
+
+function CalendarPicker({
+  date,
+  onChange,
+}: {
+  date: string;
+  onChange: (key: string) => void;
+}) {
+  const today = useMemo(() => new Date(), []);
+  const todayKey = useMemo(() => dateKey(today), [today]);
+  const [view, setView] = useState(() => {
+    if (date) {
+      const [y, m] = date.split("-").map(Number);
+      return { year: y, month: m - 1 };
+    }
+    return { year: today.getFullYear(), month: today.getMonth() };
+  });
+
+  // Clamp view so the user cannot navigate before the current month
+  const canPrev = view.year > today.getFullYear() || view.month > today.getMonth();
+
+  const days: { key: string; day: number; available: boolean; inView: boolean }[] = [];
+  const first = new Date(view.year, view.month, 1);
+  const startWeekday = (first.getDay() + 6) % 7; // Monday = 0
+  for (let i = 0; i < startWeekday; i++) {
+    const d = new Date(view.year, view.month, -startWeekday + i + 1);
+    days.push({ key: dateKey(d), day: d.getDate(), available: false, inView: false });
+  }
+  const last = new Date(view.year, view.month + 1, 0);
+  for (let day = 1; day <= last.getDate(); day++) {
+    const d = new Date(view.year, view.month, day);
+    const dk = dateKey(d);
+    days.push({ key: dk, day, available: dk >= todayKey, inView: true });
+  }
+  const needExtra = 42 - days.length;
+  for (let i = 0; i < needExtra; i++) {
+    const d = new Date(view.year, view.month + 1, i + 1);
+    days.push({ key: dateKey(d), day: d.getDate(), available: dateKey(d) >= todayKey, inView: false });
+  }
+
+  const prev = () => {
+    if (!canPrev) return;
+    setView((v) => (v.month === 0 ? { year: v.year - 1, month: 11 } : { year: v.year, month: v.month - 1 }));
+  };
+  const next = () => setView((v) => (v.month === 11 ? { year: v.year + 1, month: 0 } : { year: v.year, month: v.month + 1 }));
+
+  return (
+    <div className="select-none border border-gold/30 bg-background p-5 md:p-6">
+      <div className="flex items-center justify-between">
+        <p className="font-display text-lg text-foreground" style={{ fontVariantNumeric: "oldstyle-nums" }}>
+          {MONTH_FR[view.month]}{" "}
+          <span className="text-gold" style={{ fontVariantNumeric: "oldstyle-nums" }}>
+            {view.year}
+          </span>
+        </p>
+        <div className="flex items-center gap-1">
+          <button
+            type="button"
+            aria-label="Mois précédent"
+            onClick={prev}
+            disabled={!canPrev}
+            className="flex h-9 w-9 items-center justify-center border border-gold/40 text-gold transition-colors duration-200 hover:border-gold hover:bg-gold/10 disabled:opacity-30 disabled:cursor-not-allowed">
+            <ChevronLeft className="h-4 w-4" />
+          </button>
+          <button
+            type="button"
+            aria-label="Mois suivant"
+            onClick={next}
+            className="flex h-9 w-9 items-center justify-center border border-gold/40 text-gold transition-colors duration-200 hover:border-gold hover:bg-gold/10">
+            <ChevronRight className="h-4 w-4" />
+          </button>
+        </div>
+      </div>
+
+      <div className="mt-5 grid grid-cols-7 gap-1 text-center">
+        {WEEKDAY_FR.map((w) => (
+          <p key={w} className="label-luxe !text-[0.55rem] text-foreground/50 py-1">
+            {w}
+          </p>
+        ))}
+        {days.map((d, i) => (
+          <button
+            key={`${d.key}-${i}`}
+            type="button"
+            disabled={!d.available}
+            onClick={() => onChange(d.key)}
+            className={
+              d.inView
+                ? d.key === date
+                  ? "border border-gold bg-gold py-2 text-[13px] text-white"
+                  : "py-2 text-[13px] text-foreground/75 transition-colors duration-200 hover:border-gold/60 hover:text-gold"
+                : "py-2 text-[13px] text-foreground/25"
+            }>
+            {d.day}
+          </button>
+        ))}
+      </div>
+
+      {date && (
+        <p className="mt-4 border-t border-gold/30 pt-3 text-center text-foreground/60 text-[13px] font-light">
+          Date choisie —{" "}
+          <span className="text-gold">{new Date(date + "T12:00:00").toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long", year: "numeric" })}</span>
+        </p>
+      )}
+    </div>
+  );
 }
 
 export default function Booking() {
@@ -43,8 +169,6 @@ export default function Booking() {
   const [slot, setSlot] = useState("");
   const [sent, setSent] = useState(false);
 
-  const minDate = useMemo(() => todayStr(), []);
-
   const isValid = name.trim().length > 1 && phone.trim().length >= 8 && date && slot;
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -53,8 +177,6 @@ export default function Booking() {
       toast.error("Veuillez remplir tous les champs du formulaire.");
       return;
     }
-    // Elegant handover: compose a mailto to the boutique with the appointment
-    // request; the boutique answers to confirm the slot.
     const subject = encodeURIComponent("Demande de rendez-vous — Examen de la vue");
     const body = encodeURIComponent(
       `Bonjour,\n\nJe souhaite réserver un examen de la vue.\n\nNom : ${name.trim()}\nTéléphone : ${phone.trim()}\nDate souhaitée : ${date}\nCréneau : ${slot}\n\nMerci de bien vouloir me confirmer la disponibilité.\n`,
@@ -84,9 +206,9 @@ export default function Booking() {
             </h2>
           </div>
           <p className="reveal max-w-md text-foreground/65 text-base font-light leading-[1.95]">
-            Choisissez votre date et votre créneau — la maison vous contactera
-            pour confirmer le rendez-vous. Un entretien personnalisé, sans
-            attente, dans la discrétion de la résidence Phénix.
+            Choisissez votre date sur le calendrier et votre créneau — la maison
+            vous contactera pour confirmer le rendez-vous. Un entretien
+            personnalisé, sans attente, dans la discrétion de la résidence Phénix.
           </p>
         </div>
 
@@ -123,7 +245,7 @@ export default function Booking() {
             ) : (
               <form onSubmit={handleSubmit} className="gold-frame bg-background p-8 md:p-12">
                 <div className="grid gap-8 md:grid-cols-2">
-                  <div className="md:col-span-1">
+                  <div>
                     <label className="label-luxe block">Nom complet</label>
                     <input
                       value={name}
@@ -142,52 +264,68 @@ export default function Booking() {
                       className="mt-3 w-full border-b border-gold/40 bg-transparent py-3 text-foreground text-[16px] font-light placeholder:text-foreground/35 focus:border-gold focus:outline-none transition-colors"
                     />
                   </div>
-                  <div>
-                    <label className="label-luxe block">Date souhaitée</label>
-                    <input
-                      type="date"
-                      min={minDate}
-                      value={date}
-                      onChange={(e) => setDate(e.target.value)}
-                      className="mt-3 w-full border-b border-gold/40 bg-transparent py-3 text-foreground text-[16px] font-light focus:border-gold focus:outline-none transition-colors"
-                    />
-                  </div>
-                  <div className="flex items-end">
-                    <a
-                      href={`tel:${BOOKING_PHONE.replace(/\s/g, "")}`}
-                      className="flex items-center gap-3 text-foreground/70 hover:text-gold text-[13px] font-light transition-colors">
-                      <Phone className="h-4 w-4 text-gold" />
-                      Besoin d'aide ? {BOOKING_PHONE}
-                    </a>
+                </div>
+
+                {/* Calendar date picker */}
+                <div className="mt-10">
+                  <p className="label-luxe">Date souhaitée</p>
+                  <div className="mt-5 max-w-md">
+                    <CalendarPicker date={date} onChange={setDate} />
                   </div>
                 </div>
 
+                {/* Time slot grid, split morning / afternoon */}
                 <div className="mt-10">
                   <p className="label-luxe">Créneau horaire</p>
-                  <div className="mt-5 flex flex-wrap gap-3">
-                    {TIME_SLOTS.map((t) => (
-                      <button
-                        key={t}
-                        type="button"
-                        onClick={() => setSlot(t)}
-                        className={
-                          slot === t
-                            ? "border border-gold bg-gold px-5 py-3 text-white text-[13px] tracking-[0.12em] uppercase transition-colors duration-200"
-                            : "border border-gold/40 bg-transparent px-5 py-3 text-foreground/75 text-[13px] tracking-[0.12em] uppercase hover:border-gold hover:text-gold transition-colors duration-200"
-                        }>
-                        {t}
-                      </button>
-                    ))}
+                  <div className="mt-5 space-y-4">
+                    <div className="flex flex-wrap gap-3">
+                      {TIME_SLOTS.filter((t) => Number(t.split("h")[0]) < 13).map((t) => (
+                        <button
+                          key={t}
+                          type="button"
+                          onClick={() => setSlot(t)}
+                          className={
+                            slot === t
+                              ? "border border-gold bg-gold px-5 py-3 text-white text-[13px] tracking-[0.12em] uppercase transition-colors duration-200"
+                              : "border border-gold/40 bg-transparent px-5 py-3 text-foreground/75 text-[13px] tracking-[0.12em] uppercase hover:border-gold hover:text-gold transition-colors duration-200"
+                          }>
+                          {t}
+                        </button>
+                      ))}
+                    </div>
+                    <div className="flex flex-wrap gap-3 border-t border-gold/25 pt-4">
+                      {TIME_SLOTS.filter((t) => Number(t.split("h")[0]) >= 13).map((t) => (
+                        <button
+                          key={t}
+                          type="button"
+                          onClick={() => setSlot(t)}
+                          className={
+                            slot === t
+                              ? "border border-gold bg-gold px-5 py-3 text-white text-[13px] tracking-[0.12em] uppercase transition-colors duration-200"
+                              : "border border-gold/40 bg-transparent px-5 py-3 text-foreground/75 text-[13px] tracking-[0.12em] uppercase hover:border-gold hover:text-gold transition-colors duration-200"
+                          }>
+                          {t}
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
-                <button
-                  type="submit"
-                  disabled={!isValid}
-                  className="mt-12 flex items-center gap-3 border border-gold bg-gold/10 px-10 py-4 text-[13px] tracking-[0.22em] uppercase text-gold transition-colors duration-300 hover:bg-gold hover:text-white disabled:opacity-40 disabled:cursor-not-allowed">
-                  <CalendarCheck className="h-4 w-4" />
-                  Demander le rendez-vous
-                </button>
+                <div className="mt-8 flex items-center justify-between gap-6 flex-wrap">
+                  <a
+                    href={`tel:${BOOKING_PHONE.replace(/\s/g, "")}`}
+                    className="flex items-center gap-3 text-foreground/70 hover:text-gold text-[13px] font-light transition-colors">
+                    <Phone className="h-4 w-4 text-gold" />
+                    Besoin d'aide ? {BOOKING_PHONE}
+                  </a>
+                  <button
+                    type="submit"
+                    disabled={!isValid}
+                    className="flex items-center gap-3 border border-gold bg-gold/10 px-10 py-4 text-[13px] tracking-[0.22em] uppercase text-gold transition-colors duration-300 hover:bg-gold hover:text-white disabled:opacity-40 disabled:cursor-not-allowed">
+                    <CalendarCheck className="h-4 w-4" />
+                    Demander le rendez-vous
+                  </button>
+                </div>
               </form>
             )}
           </div>
@@ -200,7 +338,7 @@ export default function Booking() {
                   icon: CalendarCheck,
                   step: "Étape 01",
                   title: "Choisissez",
-                  desc: "Sélectionnez la date et le créneau qui vous conviennent.",
+                  desc: "Sélectionnez votre date sur le calendrier puis le créneau qui vous convient.",
                 },
                 {
                   icon: Phone,
