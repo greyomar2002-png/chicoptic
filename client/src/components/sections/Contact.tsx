@@ -1,7 +1,7 @@
 /*
- * CHIC OPTIC — Contact
- * Style: ebony editorial page, gold-framed map, framed contact cards with
- * corner ornaments, confident legible copy, monogram watermark seal.
+ * CHIC OPTIC — Contact ("Galerie Blanche")
+ * Style: crème gallery background, gold-framed map, white contact cards with
+ * corner ornaments, anthracite headings, confident legible copy.
  * Real data: Résidence Phénix, Jardin de Carthage, +216 25 904 141,
  * 36.8530459, 10.3028679.
  */
@@ -16,13 +16,13 @@ export default function Contact() {
   return (
     <section
       ref={ref}
-      className="relative overflow-hidden bg-ebony text-ivory py-28 md:py-40 grain"
+      className="relative overflow-hidden bg-[oklch(0.965_0.006_90)] text-foreground py-28 md:py-40"
       id="contact">
       <img
         src={LOGO}
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute -right-36 top-[62%] h-60 w-60 opacity-[0.045] hidden lg:block"
+        className="pointer-events-none absolute -right-36 top-[62%] h-60 w-60 opacity-[0.05] hidden lg:block"
       />
 
       <div className="container relative z-10">
@@ -37,8 +37,8 @@ export default function Contact() {
               l'<em className="text-gold">élégance.</em>
             </h2>
           </div>
-          <p className="reveal max-w-md text-ivory/70 text-base font-light leading-[1.95]">
-            Résidence Phénix, Jardins de Carthage — un écrin discret au cœur du
+          <p className="reveal max-w-md text-foreground/65 text-base font-light leading-[1.95]">
+            Résidence Phénix, Jardins de Carthage — un écrin lumineux au cœur du
             quartier, à quelques minutes du centre de Tunis. Chaque essai est
             un rituel ; chaque visite, un plaisir.
           </p>
@@ -56,7 +56,7 @@ export default function Contact() {
             />
           </div>
 
-          <div className="flex flex-col gap-px border border-gold/25 bg-gold/25 lg:col-span-5">
+          <div className="flex flex-col gap-px border border-gold/30 bg-gold/30 lg:col-span-5">
             {[
               {
                 icon: MapPin,
@@ -83,7 +83,7 @@ export default function Contact() {
             ].map((c) => (
               <div
                 key={c.title}
-                className="group relative bg-ebony p-8 transition-colors duration-300 hover:bg-[oklch(0.24_0.014_60)]">
+                className="group relative bg-background p-8 transition-colors duration-300 hover:bg-[oklch(0.98_0.006_90)]">
                 <div className="absolute top-3 left-3 h-4 w-4 border-t border-l border-gold/40 pointer-events-none transition-colors duration-500 group-hover:border-gold" />
                 <div className="flex items-center gap-4">
                   <c.icon className="h-5 w-5 text-gold" />
@@ -94,7 +94,7 @@ export default function Contact() {
                     href={c.href}
                     target={c.href.startsWith("http") ? "_blank" : undefined}
                     rel="noopener noreferrer"
-                    className="mt-3 block text-ivory/90 hover:text-gold text-[16px] font-light transition-colors">
+                    className="mt-3 block text-foreground/85 hover:text-gold text-[16px] font-light transition-colors">
                     {c.lines.map((l, i) => (
                       <span key={i} className="block leading-relaxed">
                         {l}
@@ -102,7 +102,7 @@ export default function Contact() {
                     ))}
                   </a>
                 ) : (
-                  <p className="mt-3 text-ivory/90 text-[16px] font-light leading-relaxed">
+                  <p className="mt-3 text-foreground/85 text-[16px] font-light leading-relaxed">
                     {c.lines.map((l, i) => (
                       <span key={i} className="block">
                         {l}

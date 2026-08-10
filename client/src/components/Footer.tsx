@@ -1,7 +1,7 @@
 /*
- * CHIC OPTIC — Footer
- * Style: deep ebony closing signature, restrained CO seal (jeweler's mark),
- * gold hairline, small caps links, maison closing line.
+ * CHIC OPTIC — Footer ("Galerie Blanche")
+ * Style: deep crème closing signature, restrained CO seal, gold hairline,
+ * small caps links, maison closing line.
  */
 import { Facebook, Phone } from "lucide-react";
 
@@ -9,7 +9,7 @@ const LOGO = "/manus-storage/logo-co_2cd9bf7c.png";
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-[oklch(0.16_0.01_60)] text-ivory/70 py-16">
+    <footer className="relative overflow-hidden bg-[oklch(0.93_0.01_85)] text-foreground/70 py-16">
       <div className="container relative z-10">
         <div className="flex flex-col items-center text-center">
           <div className="gold-frame flex items-center gap-4 px-6 py-3">
@@ -18,7 +18,7 @@ export default function Footer() {
               alt="Monogramme Chic Optic"
               className="h-10 w-10 object-contain"
             />
-            <span className="font-display text-xl tracking-[0.25em] text-ivory">
+            <span className="font-display text-xl tracking-[0.25em] text-foreground">
               CHIC OPTIC
             </span>
           </div>
@@ -47,10 +47,10 @@ export default function Footer() {
               Résidence Phénix, Jardin de Carthage
             </a>
           </div>
-          <p className="mt-6 font-display text-lg italic text-ivory/50">
+          <p className="mt-6 font-display text-lg italic text-foreground/60">
             « Votre vision, notre signature. »
           </p>
-          <p className="mt-10 text-[11px] tracking-[0.14em] text-ivory/40">
+          <p className="mt-10 text-[11px] tracking-[0.14em] text-foreground/45">
             © {new Date().getFullYear()} Chic Optic Jardin de Carthage. Tous
             droits réservés.
           </p>

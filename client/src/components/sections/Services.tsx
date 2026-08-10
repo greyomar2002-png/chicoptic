@@ -1,8 +1,7 @@
 /*
- * CHIC OPTIC — Services
- * Style: ebony interlude, editorial "catalogue page" composition,
- * framed gold-panel cards with corner ornaments, confident legible copy,
- * monogram watermark as jeweler's seal.
+ * CHIC OPTIC — Services ("Galerie Blanche")
+ * Style: crème interlude section (never ebony), white framed cards with gold
+ * corner ornaments, anthracite headings, gold details, monogram watermark.
  */
 import { Eye, Glasses, ShieldCheck, Sparkles } from "lucide-react";
 import { useReveal } from "@/pages/Home";
@@ -42,14 +41,14 @@ export default function Services() {
   return (
     <section
       ref={ref}
-      className="relative overflow-hidden bg-ebony text-ivory py-28 md:py-36 grain"
+      className="relative overflow-hidden bg-[oklch(0.965_0.006_90)] text-foreground py-28 md:py-36"
       id="services">
       {/* monogram seal watermark, deep in the lower-right corner */}
       <img
         src={LOGO}
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute -right-36 bottom-8 h-52 w-52 opacity-[0.045] hidden lg:block"
+        className="pointer-events-none absolute -right-36 bottom-8 h-52 w-52 opacity-[0.05] hidden lg:block"
       />
 
       <div className="container relative z-10">
@@ -64,24 +63,24 @@ export default function Services() {
               notre <em className="text-gold">signature.</em>
             </h2>
           </div>
-          <p className="reveal max-w-md text-ivory/70 text-base font-light leading-[1.9] lg:col-span-4 lg:col-start-9">
+          <p className="reveal max-w-md text-foreground/65 text-base font-light leading-[1.9] lg:col-span-4 lg:col-start-9">
             Quatre savoir-faire réunis sous un même toit, pour que chaque paire
             de lunettes porte le nom de son propriétaire.
           </p>
         </div>
 
-        <div className="grid gap-px border border-gold/25 bg-gold/25 sm:grid-cols-2">
+        <div className="grid gap-px border border-gold/30 bg-gold/30 sm:grid-cols-2">
           {SERVICES.map((s, i) => (
             <div
               key={s.label}
-              className="reveal group relative bg-ebony p-10 md:p-12 transition-colors duration-300 hover:bg-[oklch(0.24_0.014_60)]">
+              className="reveal group relative bg-background p-10 md:p-12 transition-colors duration-300 hover:bg-[oklch(0.98_0.006_90)]">
               <div className="absolute top-4 left-4 h-6 w-6 border-t border-l border-gold/50 pointer-events-none transition-colors duration-500 group-hover:border-gold" />
               <div className="absolute bottom-4 right-4 h-6 w-6 border-b border-r border-gold/50 pointer-events-none transition-colors duration-500 group-hover:border-gold" />
               <div className="flex items-start justify-between">
                 <span className="label-luxe">{s.label}</span>
                 <s.icon className="h-7 w-7 text-gold transition-transform duration-500 group-hover:-translate-y-1.5" />
               </div>
-              <h3 className="mt-8 font-display text-[1.7rem] md:text-[2rem] text-ivory leading-snug">
+              <h3 className="mt-8 font-display text-[1.7rem] md:text-[2rem] text-foreground leading-snug">
                 {s.title}
               </h3>
               <div className="mt-5 flex items-center gap-3">
@@ -90,7 +89,7 @@ export default function Services() {
                   N° {String(i + 1).padStart(2, "0")}
                 </span>
               </div>
-              <p className="mt-6 text-ivory/75 text-[16px] font-light leading-[1.95]">
+              <p className="mt-6 text-foreground/70 text-[16px] font-light leading-[1.95]">
                 {s.desc}
               </p>
             </div>

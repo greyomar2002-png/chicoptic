@@ -1,6 +1,6 @@
 /*
- * CHIC OPTIC — La Maison (About)
- * Style: ivory background, asymmetric split with tall portrait image,
+ * CHIC OPTIC — La Maison (About) — "Galerie Blanche"
+ * Style: white gallery background, asymmetric split with tall portrait image,
  * gold vertical rule, editorial pull quote in Cormorant italic.
  */
 import { useReveal } from "@/pages/Home";
@@ -41,8 +41,9 @@ export default function About() {
               <p>
                 Nichée dans la résidence Phénix, la maison Chic Optic associe le
                 savoir-faire de l'optique professionnelle à l'atmosphère d'une
-                joaillerie : bois sombres, laiton poli, lumière dorée et un
-                accueil que nos clients décrivent comme chaleureux et attentif.
+                galerie lumineuse : marbre clair, laiton poli, lumière naturelle
+                et un accueil que nos clients décrivent comme chaleureux et
+                attentif.
               </p>
               <p>
                 Chaque visite est un rituel — de l'analyse de votre vision à

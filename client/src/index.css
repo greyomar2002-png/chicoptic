@@ -1,6 +1,6 @@
 /*
- * CHIC OPTIC — "Or & Velours" design system
- * Palette: Ébène (deep black-brown), Or champagne (#c9a45c), Ivoire
+ * CHIC OPTIC — "Galerie Blanche" design system (white luxury)
+ * Palette: Blanc pur / ivoire / crème, Or champagne (#c9a45c), anthracite profond
  * Type: Cormorant Garamond (display) + Jost (body/UI)
  * Motifs: 1px gold hairlines, corner ornaments, letter-spaced uppercase labels
  * Motion: slow fade+rise reveals (600ms), ease-out cubic-bezier(0.23,1,0.32,1)
@@ -58,9 +58,9 @@
 
 :root {
   --radius: 0.25rem;
-  /* Light theme default: ivory background, ebony text */
-  --background: oklch(0.97 0.008 85);
-  --foreground: oklch(0.22 0.012 60);
+  /* Light theme: pure white gallery background, deep anthracite text */
+  --background: oklch(0.995 0.002 90);
+  --foreground: oklch(0.28 0.015 60);
   --card: oklch(0.985 0.005 85);
   --card-foreground: oklch(0.22 0.012 60);
   --popover: oklch(0.985 0.005 85);
@@ -91,10 +91,10 @@
   --sidebar-accent-foreground: oklch(0.22 0.012 60);
   --sidebar-border: oklch(0.85 0.02 80);
   --sidebar-ring: oklch(0.72 0.09 85);
-  --gold: oklch(0.72 0.09 85);
-  --gold-soft: oklch(0.85 0.06 85);
-  --ebony: oklch(0.2 0.012 60);
-  --ivory: oklch(0.97 0.008 85);
+  --gold: oklch(0.68 0.09 85);
+  --gold-soft: oklch(0.82 0.06 85);
+  --ebony: oklch(0.28 0.015 60);
+  --ivory: oklch(0.995 0.002 90);
 }
 
 .dark {

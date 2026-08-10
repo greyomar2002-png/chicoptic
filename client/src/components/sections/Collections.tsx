@@ -1,7 +1,9 @@
 /*
- * CHIC OPTIC — Collections
- * Style: ivory background, asymmetric editorial layout, gold-framed images
- * with corner ornaments, letter-spaced section labels, staggered reveal.
+ * CHIC OPTIC — Collections ("Galerie Blanche")
+ * Style: white gallery background, asymmetric editorial layout, gold-framed
+ * images with corner ornaments, letter-spaced labels, staggered reveal.
+ * First image now the dark slate sunglasses set (contrast moment), then the
+ * light marble optical set.
  */
 import { useReveal } from "@/pages/Home";
 
@@ -42,19 +44,15 @@ export default function Collections() {
               une même exigence.
             </h2>
           </div>
-            <p className="hidden max-w-xs text-muted-foreground text-base font-light leading-[1.9] lg:block reveal">
-              Chaque monture est choisie pour son équilibre, sa matière et sa
-              capacité à devenir l'écrin de votre regard.
-            </p>
+          <p className="hidden max-w-xs text-muted-foreground text-base font-light leading-[1.9] lg:block reveal">
+            Chaque monture est choisie pour son équilibre, sa matière et sa
+            capacité à devenir l'écrin de votre regard.
+          </p>
         </div>
 
         <div className="space-y-24 md:space-y-32">
-          {COLLECTIONS.map((c, i) => (
-            <div
-              key={c.label}
-              className={`grid items-center gap-10 lg:grid-cols-12 lg:gap-16 ${
-                c.align === "right" ? "" : ""
-              }`}>
+          {COLLECTIONS.map((c) => (
+            <div key={c.label} className="grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
               <div
                 className={`reveal gold-frame group overflow-hidden lg:col-span-7 ${
                   c.align === "right" ? "lg:order-2" : ""
@@ -65,8 +63,7 @@ export default function Collections() {
                   className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                 />
               </div>
-              <div
-                className={`lg:col-span-5 ${c.align === "right" ? "lg:order-1" : ""}`}>
+              <div className={`lg:col-span-5 ${c.align === "right" ? "lg:order-1" : ""}`}>
                 <p className="label-luxe reveal">{c.label}</p>
                 <h3
                   className="reveal mt-4 font-display text-foreground"

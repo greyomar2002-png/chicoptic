@@ -79,3 +79,11 @@ Or champagne **#c9a45c** — la couleur du laiton poli des montures haut de gamm
 - The CO monogram is a jeweler's seal: use it sparingly as a refined mark or watermark, never as a dominant decorative poster unless the whole composition is designed around it.
 - Supporting copy must remain readable and ceremonial: labels may be tiny spaced capitals, but service descriptions, contact details, and trust content must carry clear hierarchy and maison-level confidence (larger, more confident type).
 - Gold framing motif pushed into a recognizable system across images, stats, service panels, contact, and section openings; occasional monogram stamps as watermarks.
+## Direction 2 (demande utilisateur, août 2026) : « Galerie Blanche » — Luxe blanc
+L'utilisateur n'a pas aimé le thème sombre. Nouvelle direction : luxueuse MAIS BLANCHE.
+- Fonds : blanc pur / ivoire / crème très pâle ; interludes en crème, jamais d'ébène.
+- Accents : or champagne (inchangé), texte principal en anthracite profond.
+- Moments sombres autorisés : uniquement la nav fixe semi-transparente et le footer crème profond.
+- Photos : remplacer les visuels sombres par des visuels lumineux (marbre blanc, lumière naturelle).
+- Typographie Cormorant/Jost, liserés dorés à coins, monogramme CO : conservés.
+- Sections Services et Contact : fonds crème/ivoire avec liserés dorés, cartes blanches.

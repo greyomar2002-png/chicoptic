@@ -1,7 +1,7 @@
 /*
- * CHIC OPTIC — Header
- * Style: ivory bar with CO monogram seal, Cormorant wordmark, gold hairline.
- * Transparent over dark hero → ivory/gold-tinted on scroll.
+ * CHIC OPTIC — Header ("Galerie Blanche")
+ * Style: light translucent bar with CO monogram seal, Cormorant wordmark in
+ * anthracite, gold hairline on scroll.
  */
 import { useEffect, useState } from "react";
 import { Phone } from "lucide-react";
@@ -32,8 +32,8 @@ export default function Header() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         scrolled || open
-          ? "bg-ebony/95 backdrop-blur-md border-b border-gold/25 shadow-[0_2px_24px_rgba(0,0,0,0.4)]"
-          : "bg-transparent",
+          ? "bg-background/95 backdrop-blur-md border-b border-gold/30 shadow-[0_2px_24px_rgba(0,0,0,0.06)]"
+          : "bg-gradient-to-b from-[oklch(0.995_0.002_90)]/92 via-[oklch(0.995_0.002_90)]/60 to-transparent backdrop-blur-md",
       )}>
       <div className="container flex items-center justify-between h-20">
         <a href="#" className="flex items-center gap-3">
@@ -43,10 +43,10 @@ export default function Header() {
             className="h-11 w-11 object-contain"
           />
           <span className="flex flex-col leading-none">
-            <span className="font-display text-xl tracking-[0.25em] text-ivory font-medium">
+            <span className="font-display text-xl tracking-[0.25em] text-foreground/90 font-medium">
               CHIC OPTIC
             </span>
-            <span className="label-luxe mt-1 text-[0.55rem]">
+            <span className="label-luxe mt-1 text-[0.55rem] text-gold">
               Jardins de Carthage
             </span>
           </span>
@@ -57,20 +57,20 @@ export default function Header() {
             <a
               key={item.href}
               href={item.href}
-              className="text-ivory/85 hover:text-gold text-[13px] tracking-[0.22em] uppercase transition-colors duration-200">
+              className="text-foreground/80 hover:text-gold text-[13px] tracking-[0.22em] uppercase transition-colors duration-200">
               {item.label}
             </a>
           ))}
           <a
             href="tel:+21625904141"
-            className="flex items-center gap-2 border border-gold/60 px-4 py-2 text-[12px] tracking-[0.18em] uppercase text-gold hover:bg-gold hover:text-ebony transition-colors duration-200">
+            className="flex items-center gap-2 border border-gold/60 px-4 py-2 text-[12px] tracking-[0.18em] uppercase text-gold hover:bg-gold hover:text-white transition-colors duration-200">
             <Phone className="h-3.5 w-3.5" />
             +216 25 904 141
           </a>
         </nav>
 
         <button
-          className="md:hidden text-ivory p-2"
+          className="md:hidden text-foreground p-2"
           aria-label="Menu"
           onClick={() => setOpen((v) => !v)}>
           <div className="flex flex-col gap-1.5">
@@ -97,13 +97,13 @@ export default function Header() {
       </div>
 
       {open && (
-        <nav className="md:hidden bg-ebony/98 border-t border-gold/20 px-6 py-6 flex flex-col gap-5">
+        <nav className="md:hidden bg-background/98 backdrop-blur-md border-t border-gold/25 px-6 py-6 flex flex-col gap-5">
           {NAV.map((item) => (
             <a
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="text-ivory/90 hover:text-gold text-sm tracking-[0.22em] uppercase transition-colors">
+              className="text-foreground/90 hover:text-gold text-sm tracking-[0.22em] uppercase transition-colors">
               {item.label}
             </a>
           ))}
