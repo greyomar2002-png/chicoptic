@@ -215,7 +215,7 @@ export default function Booking() {
                   desc: "Présentez-vous à la résidence Phénix — votre entretien vous attend.",
                 },
               ].map((s) => (
-                <div key={s.step} className="bg-background p-8 transition-colors duration-300 hover:bg-[oklch(0.98_0.006_90)]">
+                <div key={s.step} className="bg-background p-8 transition-colors duration-300 hover:bg-[oklch(0.89_0.015_85)]">
                   <div className="flex items-start gap-5">
                     <s.icon className="mt-1 h-6 w-6 shrink-0 text-gold" />
                     <div>

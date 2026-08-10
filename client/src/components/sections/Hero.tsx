@@ -16,7 +16,7 @@ export default function Hero() {
           alt="Lunettes haut de gamme sur marbre blanc"
           className="h-full w-full object-cover object-[65%_center]"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[oklch(0.99_0.002_90)] via-[oklch(0.99_0.002_90)]/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[oklch(0.95_0.008_85)] via-[oklch(0.95_0.008_85)]/70 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent" />
       </div>
 

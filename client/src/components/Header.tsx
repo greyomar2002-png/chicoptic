@@ -33,7 +33,7 @@ export default function Header() {
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         scrolled || open
           ? "bg-background/95 backdrop-blur-md border-b border-gold/30 shadow-[0_2px_24px_rgba(0,0,0,0.06)]"
-          : "bg-gradient-to-b from-[oklch(0.995_0.002_90)]/92 via-[oklch(0.995_0.002_90)]/60 to-transparent backdrop-blur-md",
+          : "bg-gradient-to-b from-[oklch(0.95_0.008_85)]/92 via-[oklch(0.95_0.008_85)]/60 to-transparent backdrop-blur-md",
       )}>
       <div className="container flex items-center justify-between h-20">
         <a href="#" className="flex items-center gap-3">

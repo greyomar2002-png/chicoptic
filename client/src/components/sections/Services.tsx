@@ -41,7 +41,7 @@ export default function Services() {
   return (
     <section
       ref={ref}
-      className="relative overflow-hidden bg-[oklch(0.965_0.006_90)] text-foreground py-28 md:py-36"
+      className="relative overflow-hidden bg-[oklch(0.915_0.012_85)] text-foreground py-28 md:py-36"
       id="services">
       {/* monogram seal watermark, deep in the lower-right corner */}
       <img
@@ -73,7 +73,7 @@ export default function Services() {
           {SERVICES.map((s, i) => (
             <div
               key={s.label}
-              className="reveal group relative bg-background p-10 md:p-12 transition-colors duration-300 hover:bg-[oklch(0.98_0.006_90)]">
+              className="reveal group relative bg-background p-10 md:p-12 transition-colors duration-300 hover:bg-[oklch(0.89_0.015_85)]">
               <div className="absolute top-4 left-4 h-6 w-6 border-t border-l border-gold/50 pointer-events-none transition-colors duration-500 group-hover:border-gold" />
               <div className="absolute bottom-4 right-4 h-6 w-6 border-b border-r border-gold/50 pointer-events-none transition-colors duration-500 group-hover:border-gold" />
               <div className="flex items-start justify-between">
