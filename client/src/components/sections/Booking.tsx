@@ -128,14 +128,14 @@ function CalendarPicker({
       </div>
 
       <div className="mt-5 grid grid-cols-7 gap-1 text-center">
-        {WEEKDAY_FR.map((w) => (
-          <p key={w} className="label-luxe !text-[0.55rem] text-foreground/50 py-1">
+        {WEEKDAY_FR.map((w, wi) => (
+          <p key={`${w}-${wi}`} className="label-luxe !text-[0.55rem] text-foreground/50 py-1">
             {w}
           </p>
         ))}
         {days.map((d, i) => (
           <button
-            key={`${d.key}-${i}`}
+            key={d.key}
             type="button"
             disabled={!d.available}
             onClick={() => onChange(d.key)}
