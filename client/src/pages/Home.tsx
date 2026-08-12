@@ -15,6 +15,7 @@ import Marques from "@/components/sections/Marques";
 import Booking from "@/components/sections/Booking";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/Footer";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
 export default function Home() {
   return (
@@ -31,6 +32,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
+      <FloatingWhatsApp />
     </div>
   );
 }
