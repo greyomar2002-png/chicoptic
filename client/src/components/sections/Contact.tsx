@@ -8,7 +8,7 @@
 import { Clock, Facebook, MapPin, Phone } from "lucide-react";
 import { useReveal } from "@/pages/Home";
 
-const LOGO = "/manus-storage/logo-co_2cd9bf7c.png";
+const LOGO = "/assets/images/logo-co.png";
 
 export default function Contact() {
   const ref = useReveal();
