@@ -5,7 +5,7 @@
  */
 import { ArrowDown } from "lucide-react";
 
-const HERO_IMG = "/manus-storage/collection-optical_775400b2.png";
+const HERO_IMG = "/assets/images/collection-optical.png";
 
 export default function Hero() {
   return (

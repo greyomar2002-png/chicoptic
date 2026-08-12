@@ -5,7 +5,7 @@
  */
 import { Facebook, Instagram, Phone, Send } from "lucide-react";
 
-const LOGO = "/manus-storage/logo-co_2cd9bf7c.png";
+const LOGO = "/assets/images/logo-co.png";
 
 export default function Footer() {
   return (
