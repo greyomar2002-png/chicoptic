@@ -7,11 +7,13 @@
  * elegant success state.
  */
 import { useState } from "react";
-import { CalendarCheck, Check, Clock, Phone } from "lucide-react";
+import { CalendarCheck, Check, Clock, MessageCircle, Phone } from "lucide-react";
 import { useReveal } from "@/pages/Home";
 import { toast } from "sonner";
 
 const BOOKING_PHONE = "+216 25 904 141";
+// WhatsApp booking line (test number — replace with the boutique's WhatsApp when live)
+const WHATSAPP_NUMBER = "21655021740";
 
 export default function Booking() {
   const ref = useReveal();
@@ -34,6 +36,20 @@ export default function Booking() {
     window.location.href = `mailto:contact@chicoptic.tn?subject=${subject}&body=${body}`;
     setSent(true);
     toast.success("Demande prête à envoyer — merci de valider votre boîte mail.");
+  };
+
+  const handleWhatsApp = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (!isValid) {
+      toast.error("Veuillez remplir votre nom et votre téléphone avant d'envoyer.");
+      return;
+    }
+    const text = encodeURIComponent(
+      `Bonjour, je souhaite réserver un examen de la vue.\n\nNom : ${name.trim()}\nTéléphone : ${phone.trim()}\n\nMerci de bien vouloir me contacter pour convenir d'un rendez-vous.`,
+    );
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`, "_blank", "noopener");
+    setSent(true);
+    toast.success("Message WhatsApp prêt — merci de l'envoyer depuis l'application.");
   };
 
   return (
@@ -76,9 +92,9 @@ export default function Booking() {
                   Demande envoyée.
                 </h3>
                 <p className="mt-5 max-w-md text-foreground/70 text-[16px] font-light leading-[1.95]">
-                  Votre demande de rendez-vous a été préparée dans votre boîte
-                  mail. Envoyez-la, et la maison vous confirmera votre créneau
-                  dans les plus brefs délais.
+                  Votre demande de rendez-vous a été préparée. Envoyez le
+                  message WhatsApp ou validez votre boîte mail, et la maison
+                  vous confirmera votre créneau dans les plus brefs délais.
                 </p>
                 <button
                   onClick={() => {
@@ -114,20 +130,26 @@ export default function Booking() {
                   </div>
                 </div>
 
-                <div className="mt-10 flex items-center justify-between gap-6 flex-wrap">
-                  <a
-                    href={`tel:${BOOKING_PHONE.replace(/\s/g, "")}`}
-                    className="flex items-center gap-3 text-foreground/70 hover:text-gold text-[13px] font-light transition-colors">
-                    <Phone className="h-4 w-4 text-gold" />
-                    Besoin d'aide ? {BOOKING_PHONE}
-                  </a>
+                <div className="mt-10 flex flex-col gap-4">
                   <button
                     type="submit"
                     disabled={!isValid}
-                    className="flex items-center gap-3 border border-gold bg-gold/10 px-10 py-4 text-[13px] tracking-[0.22em] uppercase text-gold transition-colors duration-300 hover:bg-gold hover:text-white disabled:opacity-40 disabled:cursor-not-allowed">
+                    className="flex w-full items-center justify-center gap-3 border border-gold bg-gold/10 px-10 py-4 text-[13px] tracking-[0.22em] uppercase text-gold transition-colors duration-300 hover:bg-gold hover:text-white disabled:opacity-40 disabled:cursor-not-allowed">
                     <CalendarCheck className="h-4 w-4" />
                     Demander le rendez-vous
                   </button>
+                  <button
+                    onClick={handleWhatsApp}
+                    className="flex w-full items-center justify-center gap-3 border border-[#25D366]/50 bg-[#25D366]/10 px-10 py-4 text-[13px] tracking-[0.22em] uppercase text-[#128C7E] transition-colors duration-300 hover:bg-[#25D366] hover:text-white">
+                    <MessageCircle className="h-4 w-4" />
+                    Réserver via WhatsApp
+                  </button>
+                  <a
+                    href={`tel:${BOOKING_PHONE.replace(/\s/g, "")}`}
+                    className="flex w-full items-center justify-center gap-3 py-2 text-foreground/60 hover:text-gold text-[13px] font-light transition-colors">
+                    <Phone className="h-4 w-4 text-gold" />
+                    Besoin d'aide ? {BOOKING_PHONE}
+                  </a>
                 </div>
               </form>
             )}

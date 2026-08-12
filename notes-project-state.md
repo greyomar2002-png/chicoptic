@@ -45,3 +45,12 @@
 - Fix plan: remove loading="lazy" (use eager) in Marques.tsx logo imgs; verify with screenshot; checkpoint.
 - Booking form now simplified: name + phone only (user removed calendar + time slots).
 - Still placeholders to confirm with user: hours (Lundi–Samedi 9h00–18h30), email (contact@chicoptic.tn), real brand list.
+
+## Task: push project to GitHub (Aug 12, 2026)
+- User wants code pushed to https://github.com/greyomar2002-png/chicoptic.git (repo exists, empty, public, owner greyomar2002-png).
+- GitHub connector token (ghu_ App token) = READ-ONLY content access; push blocked "Resource not accessible by integration".
+- User chose Option B: provided fine-grained PAT (github_pat_...) with read/write Contents on chicoptic repo.
+- Plan: add PAT to project Secrets panel (Management UI -> Settings -> Secrets) is NOT available for static webdev? Actually Secrets panel "requires web-db-user for adding new secrets" — for static projects secrets can't be added via panel. Alternative: use PAT directly in git push URL in-shell (env var), do NOT write to any file tracked in git.
+- Project git: remote 'origin' points to Cloudflare artifacts; 'github' remote was added (https://github.com/greyomar2002-png/chicoptic.git).
+- Push command pattern: git push -u "https://x-access-token:$PAT@github.com/greyomar2002-png/chicoptic.git" main
+- After success: confirm to user with repo URL https://github.com/greyomar2002-png/chicoptic.

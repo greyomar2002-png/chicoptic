@@ -7,7 +7,7 @@
 import { Star } from "lucide-react";
 import { useReveal } from "@/pages/Home";
 
-const LOGO = "/assets/images/logo-co.png";
+const LOGO = "/manus-storage/logo-co_2cd9bf7c.png";
 
 export default function Reputation() {
   const ref = useReveal();
