@@ -13,6 +13,15 @@ type Brand = {
   note: string;
 };
 
+const BRAND_LOGOS: Record<string, string> = {
+  Persol: "/manus-storage/logo-persol_62680d49.png",
+  "ic! berlin": "/manus-storage/logo-icberlin_fc3d8537.png",
+  Lunor: "/manus-storage/logo-lunor_a4cb7804.png",
+  "Ray-Ban": "/manus-storage/logo-rayban_5b4f2b36.png",
+  Kuboraum: "/manus-storage/logo-kuboraum_71117ad1.png",
+  Mykita: "/manus-storage/logo-mykita_92f74d70.png",
+};
+
 const BRANDS: Brand[] = [
   {
     name: "Persol",
@@ -94,7 +103,12 @@ export default function Marques() {
               <span className="absolute left-4 top-4 h-4 w-4 border-l border-t border-gold/60 transition-colors duration-300 group-hover:border-gold" />
               <span className="absolute bottom-4 right-4 h-4 w-4 border-b border-r border-gold/60 transition-colors duration-300 group-hover:border-gold" />
 
-              <p className="label-luxe !text-[0.6rem] text-gold">{b.country} — {b.maison}</p>
+              <img
+                src={BRAND_LOGOS[b.name]}
+                alt={`Emblème ${b.name}`}
+                className="h-16 w-16 object-contain opacity-90 transition-transform duration-300 group-hover:scale-105"
+              />
+              <p className="label-luxe !text-[0.6rem] text-gold mt-6">{b.country} — {b.maison}</p>
               <h3
                 className="reveal mt-6 font-display text-foreground"
                 style={{ fontSize: "clamp(1.7rem, 2.5vw, 2.2rem)", letterSpacing: "0.04em" }}>
