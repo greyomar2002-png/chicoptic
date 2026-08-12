@@ -3,8 +3,7 @@
  * Style: warm parchment background with crème interlude, gold-framed form
  * panel with corner ornaments, gold primary button, letter-spaced labels.
  * Booking flow: name and phone only — the boutique calls back to agree on
- * the appointment — submitted via mailto to the boutique and confirmed with an
- * elegant success state.
+ * the appointment — submitted via WhatsApp with an elegant success state.
  */
 import { useState } from "react";
 import { CalendarCheck, Check, Clock, MessageCircle, Phone } from "lucide-react";
@@ -22,21 +21,6 @@ export default function Booking() {
   const [sent, setSent] = useState(false);
 
   const isValid = name.trim().length > 1 && phone.trim().length >= 8;
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!isValid) {
-      toast.error("Veuillez remplir tous les champs du formulaire.");
-      return;
-    }
-    const subject = encodeURIComponent("Demande de rendez-vous — Examen de la vue");
-    const body = encodeURIComponent(
-      `Bonjour,\n\nJe souhaite réserver un examen de la vue.\n\nNom : ${name.trim()}\nTéléphone : ${phone.trim()}\n\nMerci de bien vouloir me contacter pour convenir d'un rendez-vous.\n`,
-    );
-    window.location.href = `mailto:contact@chicoptic.tn?subject=${subject}&body=${body}`;
-    setSent(true);
-    toast.success("Demande prête à envoyer — merci de valider votre boîte mail.");
-  };
 
   const handleWhatsApp = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -92,9 +76,9 @@ export default function Booking() {
                   Demande envoyée.
                 </h3>
                 <p className="mt-5 max-w-md text-foreground/70 text-[16px] font-light leading-[1.95]">
-                  Votre demande de rendez-vous a été préparée. Envoyez le
-                  message WhatsApp ou validez votre boîte mail, et la maison
-                  vous confirmera votre créneau dans les plus brefs délais.
+                  Votre message WhatsApp a été préparé. Envoyez-le, et la
+                  maison vous confirmera votre créneau dans les plus brefs
+                  délais.
                 </p>
                 <button
                   onClick={() => {
@@ -107,7 +91,7 @@ export default function Booking() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="gold-frame bg-background p-8 md:p-12">
+              <div className="gold-frame bg-background p-8 md:p-12">
                 <div className="grid gap-8 md:grid-cols-2">
                   <div>
                     <label className="label-luxe block">Nom complet</label>
@@ -132,15 +116,9 @@ export default function Booking() {
 
                 <div className="mt-10 flex flex-col gap-4">
                   <button
-                    type="submit"
-                    disabled={!isValid}
-                    className="flex w-full items-center justify-center gap-3 border border-gold bg-gold/10 px-10 py-4 text-[13px] tracking-[0.22em] uppercase text-gold transition-colors duration-300 hover:bg-gold hover:text-white disabled:opacity-40 disabled:cursor-not-allowed">
-                    <CalendarCheck className="h-4 w-4" />
-                    Demander le rendez-vous
-                  </button>
-                  <button
                     onClick={handleWhatsApp}
-                    className="flex w-full items-center justify-center gap-3 border border-[#25D366]/50 bg-[#25D366]/10 px-10 py-4 text-[13px] tracking-[0.22em] uppercase text-[#128C7E] transition-colors duration-300 hover:bg-[#25D366] hover:text-white">
+                    disabled={!isValid}
+                    className="flex w-full items-center justify-center gap-3 border border-[#25D366]/50 bg-[#25D366]/10 px-10 py-4 text-[13px] tracking-[0.22em] uppercase text-[#128C7E] transition-colors duration-300 hover:bg-[#25D366] hover:text-white disabled:opacity-40 disabled:cursor-not-allowed">
                     <MessageCircle className="h-4 w-4" />
                     Réserver via WhatsApp
                   </button>
@@ -151,7 +129,7 @@ export default function Booking() {
                     Besoin d'aide ? {BOOKING_PHONE}
                   </a>
                 </div>
-              </form>
+              </div>
             )}
           </div>
 
