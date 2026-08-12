@@ -3,7 +3,7 @@
  * Style: deep crème closing signature, restrained CO seal, gold hairline,
  * small caps links, maison closing line.
  */
-import { Facebook, Phone } from "lucide-react";
+import { Facebook, Instagram, Phone, Send } from "lucide-react";
 
 const LOGO = "/manus-storage/logo-co_2cd9bf7c.png";
 
@@ -40,6 +40,22 @@ export default function Footer() {
               className="flex items-center gap-2 hover:text-gold transition-colors">
               <Facebook className="h-3.5 w-3.5 text-gold" />
               Facebook
+            </a>
+            <a
+              href="https://www.instagram.com/chicoptictunis"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 hover:text-gold transition-colors">
+              <Instagram className="h-3.5 w-3.5 text-gold" />
+              Instagram
+            </a>
+            <a
+              href="https://www.tiktok.com/@wissalgharbi_chicoptic"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 hover:text-gold transition-colors">
+              <Send className="h-3.5 w-3.5 text-gold" />
+              TikTok
             </a>
             <a
               href="#contact"

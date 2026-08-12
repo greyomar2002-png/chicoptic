@@ -11,8 +11,8 @@ import { useReveal } from "@/pages/Home";
 import { toast } from "sonner";
 
 const BOOKING_PHONE = "+216 25 904 141";
-// WhatsApp booking line (test number — replace with the boutique's WhatsApp when live)
-const WHATSAPP_NUMBER = "21655021740";
+// WhatsApp booking line (boutique's real number)
+const WHATSAPP_NUMBER = "21625904141";
 
 export default function Booking() {
   const ref = useReveal();

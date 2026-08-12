@@ -5,7 +5,7 @@
  * Real data: Résidence Phénix, Jardin de Carthage, +216 25 904 141,
  * 36.8530459, 10.3028679.
  */
-import { Clock, Facebook, MapPin, Phone } from "lucide-react";
+import { Clock, Facebook, Instagram, MapPin, Phone, Send } from "lucide-react";
 import { useReveal } from "@/pages/Home";
 
 const LOGO = "/manus-storage/logo-co_2cd9bf7c.png";
@@ -79,6 +79,18 @@ export default function Contact() {
                 title: "Facebook",
                 lines: ["facebook.com/chicoptictunis"],
                 href: "https://www.facebook.com/chicoptictunis",
+              },
+              {
+                icon: Instagram,
+                title: "Instagram",
+                lines: ["@chicoptictunis"],
+                href: "https://www.instagram.com/chicoptictunis",
+              },
+              {
+                icon: Send,
+                title: "TikTok",
+                lines: ["@wissalgharbi_chicoptic"],
+                href: "https://www.tiktok.com/@wissalgharbi_chicoptic",
               },
             ].map((c) => (
               <div
