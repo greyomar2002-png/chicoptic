@@ -39,3 +39,10 @@ Image reserved paths: /home/ubuntu/webdev-static-assets/brand-tomford.png etc.
 - Current checkpoint before fix: cea88ef0 (pushed as cea88ef). Local Hero.tsx now edited, need tsc+build check, screenshot verify mobile+desktop, checkpoint, push.
 - Hero image: /manus-storage/hero-portrait_5a0e738a.png.
 - Business data: OPTIMIST J Carthage, Residence Venus, Jardins de Carthage 2046, +216 98 410 676, Mon-Sat 9h30-20h00, WhatsApp +216 25 904 141, listing URL https://www.google.com/maps/place/OPTIMIST+J+Carthage/@36.8536248,10.3016218,17z/data=!3m1!4b1!4m6!3m5!1s0x12e2b500545570db:0xce9690b7dfdf3b7c!8m2!3d36.8536248!4d10.3016218!16s%2Fg%2F11w7ncbfb0, directions via place_id ChIJ23BVVQC14iIRfDvf38eQls4.
+
+## Hero face + fade-in update state (Aug 15, 2026 21:25)
+User asked: show more of the face, plus smooth fade-in loading animation for hero elements.
+Progress: created /home/ubuntu/webdev-static-assets/hero-portrait-face.png (1291x1429, face-centered crop from hero-portrait.png x 44-100%, y 2-95%), uploaded → /manus-storage/hero-portrait-face_e1aed79a.png. Hero.tsx rewritten: useHeroReveal() hook (setTimeout 200ms + IntersectionObserver fallback, visible state), 4 staggered stages with 700ms transitions at 80ms intervals (80/160/240/320/400ms delays), replaced old useReveal import (Home.tsx still exports useReveal, fine).
+Initial object position object-[62%_34%] put face too far right on desktop (eyes hidden by dissolve). Changed to object-[20%_center] md:object-[30%_center] — face crop's face is left-heavy, dissolve is on the right side, so anchoring left shows the eyes.
+Next: screenshot mobile+desktop verify, checkpoint (auto-publish), push via git push "https://x-access-token:${GH_PUSH_TOKEN}@github.com/greyomar2002-png/chicoptic.git" +HEAD:main.
+Last checkpoint: a0aad8fe.
