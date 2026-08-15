@@ -1,79 +1,45 @@
 /*
  * OPTIMIST J CARTHAGE — Les Marques ("Galerie Blanche")
- * Style: warm parchment background with crème interlude, gold-framed editorial
- * blocks, letter-spaced uppercase labels, monogram accents, letter-wordmark
- * brand entries in the manner of a haute-joaillerie catalogue.
+ * Style: warm parchment background with crème interlude, gold-framed photo
+ * cards in the manner of a campaign lookbook — each brand is a photographic
+ * card with its bold wordmark at the bottom (per the client's example card).
  * Data: real brands carried by the boutique — Tom Ford, Ray-Ban, Moscot,
  * Persol, Prada, Carolina Herrera, Guess, Tommy Hilfiger.
  */
 import { useReveal } from "@/pages/Home";
 
-type Brand = {
-  name: string;
-  maison: string;
-  country: string;
-  note: string;
-};
-
-const BRAND_LOGOS: Record<string, string> = {
-  "Tom Ford": "/manus-storage/logo-tomford_28787d24.png",
-  "Ray-Ban": "/manus-storage/logo-rayban2_5dd91c9c.png",
-  Moscot: "/manus-storage/logo-moscot_cd251caa.png",
-  Persol: "/manus-storage/logo-persol2_1312200d.png",
-  Prada: "/manus-storage/logo-prada_91b5d77b.png",
-  "Carolina Herrera": "/manus-storage/logo-carolinaherrera_3fd7ab65.png",
-  Guess: "/manus-storage/logo-guess_2eb23ee3.png",
-  "Tommy Hilfiger": "/manus-storage/logo-tommyhilfiger_fc188366.png",
-};
-
-const BRANDS: Brand[] = [
+const BRANDS: { name: string; img: string }[] = [
   {
     name: "Tom Ford",
-    maison: "New York",
-    country: "États-Unis",
-    note: "L'allure hollywoodienne par excellence — acétates profonds et lignes architecturales, un regard qui impose sa présence.",
+    img: "/manus-storage/brand-tomford_d4607d2d.png",
   },
   {
     name: "Ray-Ban",
-    maison: "Milan",
-    country: "Italie",
-    note: "Les classiques absolus — Aviator, Wayfarer et Clubmaster, réinventés saison après saison.",
+    img: "/manus-storage/brand-rayban_b72f8e0b.png",
   },
   {
     name: "Moscot",
-    maison: "New York",
-    country: "États-Unis",
-    note: "Cinq générations d'artisans lunetiers depuis 1915 — le Lemtosh, une icône du Lower East Side.",
+    img: "/manus-storage/brand-moscot_8790a33e.png",
   },
   {
     name: "Persol",
-    maison: "Torino",
-    country: "Italie",
-    note: "L'icône acétate depuis 1917 — la flèche silver arrow et le suprème Meflecto, taillés à la main.",
+    img: "/manus-storage/brand-persol_a22738d3.png",
   },
   {
     name: "Prada",
-    maison: "Milan",
-    country: "Italie",
-    note: "L'avant-garde milanaise — matériaux inattendus et géométrie audacieuse, la mode mise au service du regard.",
+    img: "/manus-storage/brand-prada_5eeac2ae.png",
   },
   {
     name: "Carolina Herrera",
-    maison: "Caracas · New York",
-    country: "Venezuela",
-    note: "L'élégance féminine intemporelle — lignes épurées et raffinements discrets, à l'image de la maison.",
+    img: "/manus-storage/brand-carolinaherrera_59046d44.png",
   },
   {
     name: "Guess",
-    maison: "Los Angeles",
-    country: "États-Unis",
-    note: "La silhouette californienne — designs contemporains accessibles, entre décontraction et glamour.",
+    img: "/manus-storage/brand-guess_45d4cc17.png",
   },
   {
     name: "Tommy Hilfiger",
-    maison: "New York",
-    country: "États-Unis",
-    note: "Le classicisme all-American — couleurs franches et coupes iconiques, un style qui se porte au quotidien.",
+    img: "/manus-storage/brand-tommyhilfiger_abe39341.png",
   },
 ];
 
@@ -108,33 +74,20 @@ export default function Marques() {
           </p>
         </div>
 
-        {/* Brand catalogue — alternating editorial blocks */}
-        <div className="grid gap-px border border-gold/30 bg-gold/30 md:grid-cols-2 lg:grid-cols-4">
+        {/* Brand lookbook — photographic campaign cards */}
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {BRANDS.map((b, i) => (
-            <div
+            <a
               key={b.name}
-              className="reveal group relative bg-[oklch(0.90_0.018_85)] p-8 transition-colors duration-300 hover:bg-[oklch(0.87_0.02_85)]"
+              href="#contact"
+              className="reveal group relative overflow-hidden rounded-xl transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_18px_48px_-14px_rgba(120,90,40,0.35)]"
               style={{ transitionDelay: `${(i % 4) * 60}ms` }}>
-              {/* gold corner accents */}
-              <span className="absolute left-4 top-4 h-4 w-4 border-l border-t border-gold/60 transition-colors duration-300 group-hover:border-gold" />
-              <span className="absolute bottom-4 right-4 h-4 w-4 border-b border-r border-gold/60 transition-colors duration-300 group-hover:border-gold" />
-
               <img
-                src={BRAND_LOGOS[b.name]}
-                alt={`Emblème ${b.name}`}
-                className="h-16 w-16 object-contain opacity-90 transition-transform duration-300 group-hover:scale-105"
+                src={b.img}
+                alt={b.name}
+                className="aspect-[3/4] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
               />
-              <p className="label-luxe !text-[0.6rem] text-gold mt-6">{b.country} — {b.maison}</p>
-              <h3
-                className="reveal mt-6 font-display text-foreground"
-                style={{ fontSize: "clamp(1.5rem, 2.2vw, 2rem)", letterSpacing: "0.04em" }}>
-                {b.name}
-              </h3>
-              <div className="mt-4 h-px w-12 bg-gold/70" />
-              <p className="mt-5 text-foreground/70 text-[15px] font-light leading-[1.9]">
-                {b.note}
-              </p>
-            </div>
+            </a>
           ))}
         </div>
 

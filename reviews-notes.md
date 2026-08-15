@@ -17,3 +17,9 @@ The `https://www.google.com/maps/place/?q=place_id:ChIJ...` format loads an empt
 https://www.google.com/maps/place/OPTIMIST+J+Carthage/@36.8536248,10.3016218,17z/data=!3m1!4b1!4m6!3m5!1s0x12e2b500545570db:0xce9690b7dfdf3b7c!8m2!3d36.8536248!4d10.3016218!16s%2Fg%2F11w7ncbfb0
 
 Plan: set LISTING_URL in Contact.tsx and Reputation.tsx to this full URL. Also update Footer if it uses a listing link.
+
+## Brand card style spec (Aug 15, 2026)
+
+User example: Sneaker brand card (299x427 portrait, rounded corners), lifestyle product photo (shoe in scene) with bold white italic brand wordmark ("SKECHERS") at the bottom. Adaptation for OPTIMIST: eyewear photos with bold condensed brand wordmark at bottom, aspect ~3:4 (fit the 4-col grid), rounded corners via CSS rounded-xl on the img. Real brands: Tom Ford, Ray-Ban, Moscot, Persol, Prada, Carolina Herrera, Guess, Tommy Hilfiger.
+Marques grid currently: lg:grid-cols-4, cards have gold corner accents, logo img h-16 w-16, label-luxe line (country + maison), h3 name, h-px divider, note paragraph — to remove label/h3/divider/note and use full-bleed photo card instead.
+Image reserved paths: /home/ubuntu/webdev-static-assets/brand-tomford.png etc.

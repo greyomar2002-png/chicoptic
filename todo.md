@@ -20,3 +20,8 @@
 
 ## Phase 4: Deliver
 - [ ] Report to user
+
+# Brand photo cards (Aug 15, 2026)
+- [ ] Generate 8 photographic brand cards (portrait style like the Skechers example: product shot + bold brand name at bottom) for Tom Ford, Ray-Ban, Moscot, Persol, Prada, Carolina Herrera, Guess, Tommy Hilfiger
+- [ ] Replace monogram logos in Marques.tsx with the photo cards, remove description text
+- [ ] Verify, checkpoint, push
