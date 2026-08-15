@@ -68,7 +68,7 @@ export default function Hero() {
         <img
           src={PORTRAIT_IMG}
           alt="Homme portant des lunettes écaille chez OPTIMIST aux Jardins de Carthage"
-          className="absolute inset-y-0 right-0 h-full w-[48%] sm:w-[52%] md:w-[58%] object-cover object-[70%_center]"
+          className="absolute inset-y-0 right-0 h-full w-[48%] sm:w-[52%] md:w-[60%] object-cover object-[62%_center]"
         />
         {/* full-width dissolve: exact page background (oklch 0.90 0.015 85)
             opaque across most of the band, only dissolving on the far right
@@ -77,7 +77,7 @@ export default function Hero() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to right, oklch(0.90 0.015 85) 0%, oklch(0.90 0.015 85) 80%, oklch(0.90 0.015 85 / 0.85) 88%, oklch(0.90 0.015 85 / 0.4) 95%, transparent 100%)",
+              "linear-gradient(to right, oklch(0.90 0.015 85) 0%, oklch(0.90 0.015 85) 58%, oklch(0.90 0.015 85 / 0.78) 72%, oklch(0.90 0.015 85 / 0.4) 86%, transparent 100%)",
           }}
         />
         {/* bottom blend into next section */}
