@@ -30,3 +30,8 @@
 - [ ] Generate cinematic portrait (man in tortoiseshell glasses, dark-warm tones, right side of hero) in OPTIMIST warm ivory/gold palette
 - [ ] Rebuild Hero.tsx: left column with gold-rule "CARTHAGE · TUNISIE" label, two-tone editorial headline ("Voyez la" ivory + "différence." gold italic), subline, two CTAs (filled gold + outlined); right column portrait photo
 - [ ] Verify, checkpoint, push, deliver
+
+# Lunettes de vue image swap (Aug 15)
+- [ ] Generate new lifestyle photo (Galerie Blanche palette) for the Lunettes de vue card
+- [ ] Upload to webdev storage and swap into Collections.tsx
+- [ ] TypeScript + build check, screenshot verify, checkpoint, push, deliver
