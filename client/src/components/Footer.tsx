@@ -3,7 +3,7 @@
  * Style: deep crème closing signature, restrained OJ seal, gold hairline,
  * small caps links, maison closing line.
  */
-import { MapPin, Phone } from "lucide-react";
+import { Instagram, MapPin, Phone } from "lucide-react";
 
 const LOGO = "/manus-storage/logo-opt_461d86f0.png";
 
@@ -32,6 +32,14 @@ export default function Footer() {
               className="flex items-center gap-2 hover:text-gold transition-colors">
               <Phone className="h-3.5 w-3.5 text-gold" />
               +216 98 410 676
+            </a>
+            <a
+              href="https://www.instagram.com/optimist.tn/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 hover:text-gold transition-colors">
+              <Instagram className="h-3.5 w-3.5 text-gold" />
+              Instagram
             </a>
             <a
               href="#contact"
