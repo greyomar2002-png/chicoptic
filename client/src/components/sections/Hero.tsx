@@ -13,14 +13,25 @@ export default function Hero() {
   return (
     <section className="relative overflow-hidden bg-background grain">
       {/* Right side: cinematic portrait bleeding to the edge */}
-      <div className="absolute inset-y-0 right-0 w-[40%] sm:w-[50%] md:w-[62%]">
+      {/* The portrait band is extended far left and dissolved by a full-height
+          ivory gradient that starts opaque at the band's left edge, so the
+          photo melts into the page with no visible seam */}
+      <div className="absolute inset-y-0 right-0 w-[85%] sm:w-[85%] md:w-[92%]">
         <img
           src={PORTRAIT_IMG}
           alt="Homme portant des lunettes écaille chez OPTIMIST aux Jardins de Carthage"
-          className="h-full w-full object-cover object-[74%_34%] md:object-[70%_30%]"
+          className="absolute inset-y-0 right-0 h-full w-[40%] sm:w-[50%] md:w-[62%] object-cover object-[74%_34%] md:object-[70%_30%]"
         />
-        {/* warm ivory fade so the photo merges with the page on the left */}
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/65 to-transparent md:via-background/85" />
+        {/* full-width dissolve: exact page background (oklch 0.90 0.015 85)
+            opaque across most of the band, only dissolving on the far right
+            → the photo melts into the page with no visible edge */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to right, oklch(0.90 0.015 85) 0%, oklch(0.90 0.015 85) 55%, oklch(0.90 0.015 85 / 0.96) 75%, oklch(0.90 0.015 85 / 0.75) 88%, transparent 100%)",
+          }}
+        />
         {/* bottom blend into next section */}
         <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-background to-transparent" />
       </div>

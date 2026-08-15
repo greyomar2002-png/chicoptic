@@ -32,3 +32,10 @@ Image reserved paths: /home/ubuntu/webdev-static-assets/brand-tomford.png etc.
 - Hero.tsx structure: section bg-background grain; right portrait div absolute inset-y-0 right-0; container flex min-h-[100svh] justify-center pt-24; eyebrow "Carthage · Tunisie"; h1 "Voyez la / différence."; subline p; two CTAs (#booking, #marques); bottom-right caption (md:block only).
 - Note: user's screenshot looks like it was captured BEFORE checkpoint published OR shows the older hero-portrait generating placeholder. Dev preview "not live" banner is a Manus preview artifact.
 - Next: verify published site on mobile URL, check if reveal classes hide content (reveal + IntersectionObserver may hide elements on first paint — elements get is-visible added by IntersectionObserver with threshold 0.12). If hero text never reveals on mobile (e.g., no IntersectionObserver support or page height issue), content invisible. Actually `.reveal` likely starts with opacity-0 until .is-visible — on mobile portrait (tall narrow) hero is visible, should trigger. Check index.css for .reveal rule.
+
+## Seam fix state (Aug 15, 2026 21:20)
+- User screenshot showed a visible vertical seam line at the portrait's left edge (photo starts abruptly, ivory-to-photo edge at ~60% width on mobile).
+- Fix approach: band widened to w-[85%]; img stays at w-[40%] sm:w-[50%] md:w-[62%] on the right; overlay div full-width with explicit linear-gradient using exact background color oklch(0.90 0.015 85): opaque 0-55%, 0.96 at 75%, 0.75 at 88%, transparent 100%.
+- Current checkpoint before fix: cea88ef0 (pushed as cea88ef). Local Hero.tsx now edited, need tsc+build check, screenshot verify mobile+desktop, checkpoint, push.
+- Hero image: /manus-storage/hero-portrait_5a0e738a.png.
+- Business data: OPTIMIST J Carthage, Residence Venus, Jardins de Carthage 2046, +216 98 410 676, Mon-Sat 9h30-20h00, WhatsApp +216 25 904 141, listing URL https://www.google.com/maps/place/OPTIMIST+J+Carthage/@36.8536248,10.3016218,17z/data=!3m1!4b1!4m6!3m5!1s0x12e2b500545570db:0xce9690b7dfdf3b7c!8m2!3d36.8536248!4d10.3016218!16s%2Fg%2F11w7ncbfb0, directions via place_id ChIJ23BVVQC14iIRfDvf38eQls4.
