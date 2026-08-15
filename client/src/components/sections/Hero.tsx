@@ -75,9 +75,6 @@ export default function Hero() {
         </p>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 md:block">
-        <span className="h-16 w-px bg-gradient-to-b from-transparent to-gold/70" />
-      </div>
     </section>
   );
 }
