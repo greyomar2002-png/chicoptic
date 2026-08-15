@@ -3,6 +3,8 @@
  * Style: warm parchment background with crème interlude, gold-framed editorial
  * blocks, letter-spaced uppercase labels, monogram accents, letter-wordmark
  * brand entries in the manner of a haute-joaillerie catalogue.
+ * Data: real brands carried by the boutique — Tom Ford, Ray-Ban, Moscot,
+ * Persol, Prada, Carolina Herrera, Guess, Tommy Hilfiger.
  */
 import { useReveal } from "@/pages/Home";
 
@@ -14,32 +16,22 @@ type Brand = {
 };
 
 const BRAND_LOGOS: Record<string, string> = {
-  Persol: "/manus-storage/logo-persol_af1505eb.png",
-  "ic! berlin": "/manus-storage/logo-icberlin_0ada6054.png",
-  Lunor: "/manus-storage/logo-lunor_b046babd.png",
-  "Ray-Ban": "/manus-storage/logo-rayban_0af9cd90.png",
-  Kuboraum: "/manus-storage/logo-kuboraum_cdce3507.png",
-  Mykita: "/manus-storage/logo-mykita_b963637a.png",
+  "Tom Ford": "/manus-storage/logo-tomford_28787d24.png",
+  "Ray-Ban": "/manus-storage/logo-rayban2_5dd91c9c.png",
+  Moscot: "/manus-storage/logo-moscot_cd251caa.png",
+  Persol: "/manus-storage/logo-persol2_1312200d.png",
+  Prada: "/manus-storage/logo-prada_91b5d77b.png",
+  "Carolina Herrera": "/manus-storage/logo-carolinaherrera_3fd7ab65.png",
+  Guess: "/manus-storage/logo-guess_2eb23ee3.png",
+  "Tommy Hilfiger": "/manus-storage/logo-tommyhilfiger_fc188366.png",
 };
 
 const BRANDS: Brand[] = [
   {
-    name: "Persol",
-    maison: "Torino",
-    country: "Italie",
-    note: "L'icône acétate depuis 1917 — la flèche silver arrow et le suprème Meflecto, taillés à la main.",
-  },
-  {
-    name: "ic! berlin",
-    maison: "Berlin",
-    country: "Allemagne",
-    note: "Sans soudure ni vis — l'ingénierie des feuilles de métal, une monture née pour durer.",
-  },
-  {
-    name: "Lunor",
-    maison: "Althengstett",
-    country: "Allemagne",
-    note: "La haute lunetterie allemande — argent, titane et or, sertis comme une pièce de joaillerie.",
+    name: "Tom Ford",
+    maison: "New York",
+    country: "États-Unis",
+    note: "L'allure hollywoodienne par excellence — acétates profonds et lignes architecturales, un regard qui impose sa présence.",
   },
   {
     name: "Ray-Ban",
@@ -48,16 +40,40 @@ const BRANDS: Brand[] = [
     note: "Les classiques absolus — Aviator, Wayfarer et Clubmaster, réinventés saison après saison.",
   },
   {
-    name: "Kuboraum",
-    maison: "Berlin",
-    country: "Italie",
-    note: "Le masque comme bijou — des acétates sculptés à la main, aux volumes théâtraux.",
+    name: "Moscot",
+    maison: "New York",
+    country: "États-Unis",
+    note: "Cinq générations d'artisans lunetiers depuis 1915 — le Lemtosh, une icône du Lower East Side.",
   },
   {
-    name: "Mykita",
-    maison: "Berlin",
-    country: "Allemagne",
-    note: "Acier inoxydable feuille de 0,5 mm — la précision horlogère appliquée au regard.",
+    name: "Persol",
+    maison: "Torino",
+    country: "Italie",
+    note: "L'icône acétate depuis 1917 — la flèche silver arrow et le suprème Meflecto, taillés à la main.",
+  },
+  {
+    name: "Prada",
+    maison: "Milan",
+    country: "Italie",
+    note: "L'avant-garde milanaise — matériaux inattendus et géométrie audacieuse, la mode mise au service du regard.",
+  },
+  {
+    name: "Carolina Herrera",
+    maison: "Caracas · New York",
+    country: "Venezuela",
+    note: "L'élégance féminine intemporelle — lignes épurées et raffinements discrets, à l'image de la maison.",
+  },
+  {
+    name: "Guess",
+    maison: "Los Angeles",
+    country: "États-Unis",
+    note: "La silhouette californienne — designs contemporains accessibles, entre décontraction et glamour.",
+  },
+  {
+    name: "Tommy Hilfiger",
+    maison: "New York",
+    country: "États-Unis",
+    note: "Le classicisme all-American — couleurs franches et coupes iconiques, un style qui se porte au quotidien.",
   },
 ];
 
@@ -85,20 +101,20 @@ export default function Marques() {
             </h2>
           </div>
           <p className="reveal max-w-md text-foreground/65 text-base font-light leading-[1.95]">
-            Une sélection exigeante de maisons européennes — de la tradition
-            artisanale italienne à la précision horlogère allemande. Chaque
+            Une sélection exigeante de maisons internationales — de la
+            tradition artisanale italienne au classicisme new-yorkais. Chaque
             monture de l'écrin est choisie pour son savoir-faire, sa matière et
             son caractère.
           </p>
         </div>
 
         {/* Brand catalogue — alternating editorial blocks */}
-        <div className="grid gap-px border border-gold/30 bg-gold/30 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-px border border-gold/30 bg-gold/30 md:grid-cols-2 lg:grid-cols-4">
           {BRANDS.map((b, i) => (
             <div
               key={b.name}
-              className="reveal group relative bg-[oklch(0.90_0.018_85)] p-8 md:p-10 transition-colors duration-300 hover:bg-[oklch(0.87_0.02_85)]"
-              style={{ transitionDelay: `${(i % 3) * 60}ms` }}>
+              className="reveal group relative bg-[oklch(0.90_0.018_85)] p-8 transition-colors duration-300 hover:bg-[oklch(0.87_0.02_85)]"
+              style={{ transitionDelay: `${(i % 4) * 60}ms` }}>
               {/* gold corner accents */}
               <span className="absolute left-4 top-4 h-4 w-4 border-l border-t border-gold/60 transition-colors duration-300 group-hover:border-gold" />
               <span className="absolute bottom-4 right-4 h-4 w-4 border-b border-r border-gold/60 transition-colors duration-300 group-hover:border-gold" />
@@ -111,7 +127,7 @@ export default function Marques() {
               <p className="label-luxe !text-[0.6rem] text-gold mt-6">{b.country} — {b.maison}</p>
               <h3
                 className="reveal mt-6 font-display text-foreground"
-                style={{ fontSize: "clamp(1.7rem, 2.5vw, 2.2rem)", letterSpacing: "0.04em" }}>
+                style={{ fontSize: "clamp(1.5rem, 2.2vw, 2rem)", letterSpacing: "0.04em" }}>
                 {b.name}
               </h3>
               <div className="mt-4 h-px w-12 bg-gold/70" />

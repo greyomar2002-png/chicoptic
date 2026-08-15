@@ -12,7 +12,8 @@ import { useReveal } from "@/pages/Home";
 
 const LOGO = "/manus-storage/logo-opt_461d86f0.png";
 const PLACE_ID = "ChIJ23BVVQC14iIRfDvf38eQls4";
-const LISTING_URL = `https://www.google.com/maps/place/?q=place_id:${PLACE_ID}`;
+const LISTING_URL =
+  "https://www.google.com/maps/place/OPTIMIST+J+Carthage/@36.8536248,10.3016218,17z/data=!3m1!4b1!4m6!3m5!1s0x12e2b500545570db:0xce9690b7dfdf3b7c!8m2!3d36.8536248!4d10.3016218!16s%2Fg%2F11w7ncbfb0";
 
 /**
  * Real Google reviews. Add verified reviews here as they are published on

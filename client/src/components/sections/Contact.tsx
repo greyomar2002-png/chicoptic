@@ -11,7 +11,8 @@ import { useReveal } from "@/pages/Home";
 const LOGO = "/manus-storage/logo-opt_461d86f0.png";
 const PLACE_ID = "ChIJ23BVVQC14iIRfDvf38eQls4";
 const DIRECTIONS_URL = `https://www.google.com/maps/dir/?api=1&destination=36.8536248,10.3016218&destination_place_id=${PLACE_ID}`;
-const LISTING_URL = `https://www.google.com/maps/place/?q=place_id:${PLACE_ID}`;
+const LISTING_URL =
+  "https://www.google.com/maps/place/OPTIMIST+J+Carthage/@36.8536248,10.3016218,17z/data=!3m1!4b1!4m6!3m5!1s0x12e2b500545570db:0xce9690b7dfdf3b7c!8m2!3d36.8536248!4d10.3016218!16s%2Fg%2F11w7ncbfb0";
 
 export default function Contact() {
   const ref = useReveal();
@@ -48,31 +49,33 @@ export default function Contact() {
         </div>
 
         <div className="grid gap-10 lg:grid-cols-12">
-          <div className="reveal gold-frame overflow-hidden lg:col-span-7">
-            <iframe
-              title="Localisation OPTIMIST Jardins de Carthage"
-              src="https://www.google.com/maps?q=36.8536248,10.3016218&z=16&output=embed"
-              className="h-[440px] w-full border-0"
-              loading="lazy"
-              allowFullScreen
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          </div>
+          <div className="lg:col-span-7 space-y-6">
+            <div className="reveal gold-frame overflow-hidden">
+              <iframe
+                title="Localisation OPTIMIST Jardins de Carthage"
+                src="https://www.google.com/maps?q=36.8536248,10.3016218&z=16&output=embed"
+                className="h-[440px] w-full border-0"
+                loading="lazy"
+                allowFullScreen
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
 
-          <a
-            href={DIRECTIONS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Obtenir l'itinéraire vers OPTIMIST Jardins de Carthage"
-            className="reveal lg:col-span-7 group inline-flex w-auto items-center gap-3 self-start border border-gold bg-gold/10 px-6 py-3.5 text-[12px] tracking-[0.22em] uppercase text-gold transition-all duration-300 hover:bg-gold hover:text-white hover:shadow-[0_8px_24px_rgba(201,164,92,0.3)] active:scale-[0.98]">
-            <Navigation className="h-4 w-4" />
-            Obtenir l'itinéraire
-            <span
-              aria-hidden="true"
-              className="inline-block translate-x-0 transition-transform duration-300 group-hover:translate-x-1.5">
-              →
-            </span>
-          </a>
+            <a
+              href={DIRECTIONS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Obtenir l'itinéraire vers OPTIMIST Jardins de Carthage"
+              className="reveal group inline-flex w-auto items-center gap-3 self-start border border-gold bg-gold/10 px-6 py-3.5 text-[12px] tracking-[0.22em] uppercase text-gold transition-all duration-300 hover:bg-gold hover:text-white hover:shadow-[0_8px_24px_rgba(201,164,92,0.3)] active:scale-[0.98]">
+              <Navigation className="h-4 w-4" />
+              Obtenir l'itinéraire
+              <span
+                aria-hidden="true"
+                className="inline-block translate-x-0 transition-transform duration-300 group-hover:translate-x-1.5">
+                →
+              </span>
+            </a>
+          </div>
 
           <div className="flex flex-col gap-px border border-gold/30 bg-gold/30 lg:col-span-5">
             {[
