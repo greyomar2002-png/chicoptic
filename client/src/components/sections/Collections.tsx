@@ -60,7 +60,7 @@ export default function Collections() {
                 <img
                   src={c.img}
                   alt={c.title}
-                  className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                  className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04] active:scale-[1.04]"
                 />
               </div>
               <div className={`lg:col-span-5 ${c.align === "right" ? "lg:order-1" : ""}`}>

@@ -85,7 +85,7 @@ export default function Marques() {
               <img
                 src={b.img}
                 alt={b.name}
-                className="aspect-[3/4] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                className="aspect-[3/4] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04] active:scale-[1.04]"
               />
             </a>
           ))}

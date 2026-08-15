@@ -19,7 +19,7 @@ export default function About() {
               <img
                 src={BOUTIQUE}
                 alt="Montures solaires de créateurs en boutique OPTIMIST"
-                className="aspect-[3/4] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                className="aspect-[3/4] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04] active:scale-[1.04]"
               />
             </div>
             <div className="absolute -bottom-6 -right-4 hidden h-24 w-24 border border-gold/40 lg:block" />
