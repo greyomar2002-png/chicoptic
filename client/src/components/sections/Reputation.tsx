@@ -7,8 +7,7 @@
  * "Laissez le premier avis" invitation links directly to the Google listing.
  * Real data: place ID ChIJ23BVVQC14iIRfDvf38eQls4, Residence Venus, Tunis 2046.
  */
-import { useCallback, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight, ExternalLink, Quote, Star } from "lucide-react";
+import { ExternalLink, Quote, Star } from "lucide-react";
 import { useReveal } from "@/pages/Home";
 
 const LOGO = "/manus-storage/logo-opt_461d86f0.png";
@@ -46,162 +45,6 @@ const THEMES = [
     desc: "Des recommandations justes pour choisir la monture et les verres qui vous conviennent vraiment.",
   },
 ];
-
-/*
- * Swipe/drag carousel state used for the (empty-state) testimonials carousel.
- * Supports pointer drag on desktop and native touch swipe on mobile, with
- * gold dot navigation and prev/next arrows. GPU-only transforms.
- */
-function useCarousel(itemCount: number, autoAdvanceMs = 6000) {
-  const [active, setActive] = useState(0);
-  const dragStartX = useRef(0);
-  const dragOffset = useRef(0);
-  const [dragX, setDragX] = useState(0);
-  const isDragging = useRef(false);
-  const timer = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  const stopAuto = useCallback(() => {
-    if (timer.current) clearInterval(timer.current);
-    timer.current = null;
-  }, []);
-
-  const startAuto = useCallback(() => {
-    stopAuto();
-    timer.current = setInterval(() => {
-      setActive((p) => (p + 1) % itemCount);
-    }, autoAdvanceMs);
-  }, [itemCount, autoAdvanceMs, stopAuto]);
-
-  const go = useCallback(
-    (dir: 1 | -1) => {
-      setActive((p) => (p + dir + itemCount) % itemCount);
-      startAuto();
-    },
-    [itemCount, startAuto],
-  );
-
-  const onPointerDown = useCallback((e: React.PointerEvent) => {
-    stopAuto();
-    isDragging.current = true;
-    dragStartX.current = e.clientX;
-    dragOffset.current = 0;
-    (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
-  }, [stopAuto]);
-
-  const onPointerMove = useCallback((e: React.PointerEvent) => {
-    if (!isDragging.current) return;
-    const dx = e.clientX - dragStartX.current;
-    dragOffset.current = dx;
-    setDragX(dx);
-  }, []);
-
-  const onPointerUp = useCallback(() => {
-    if (!isDragging.current) return;
-    isDragging.current = false;
-    setDragX(0);
-    if (Math.abs(dragOffset.current) > 60) {
-      go(dragOffset.current < 0 ? 1 : -1);
-    } else {
-      startAuto();
-    }
-    dragOffset.current = 0;
-  }, [go, startAuto]);
-
-  return { active, dragX, go, onPointerDown, onPointerMove, onPointerUp };
-}
-
-/*
- * Swipeable theme carousel: each slide is a gold-framed card with the theme
- * number, title, and description. Drag (pointer), swipe (touch), arrows, and
- * dots all drive the same state; animation stays on transform only.
- */
-function ThemeCarousel({ themes }: { themes: typeof THEMES }) {
-  const { active, dragX, go, onPointerDown, onPointerMove, onPointerUp } =
-    useCarousel(themes.length);
-
-  return (
-    <div className="lg:col-span-8 reveal">
-      <div
-        className="relative select-none touch-pan-y"
-        onPointerDown={onPointerDown}
-        onPointerMove={onPointerMove}
-        onPointerUp={onPointerUp}
-        onPointerLeave={onPointerUp}>
-        <div className="overflow-hidden rounded-xl border border-gold/30 bg-[oklch(0.87_0.016_85)]">
-          <div
-            className="flex transition-transform duration-500"
-            style={{
-              transform: `translateX(calc(${dragX}px - ${active * 100}%))`,
-              transitionTimingFunction: dragX === 0 ? "cubic-bezier(0.23,1,0.32,1)" : "none",
-              width: `${themes.length * 100}%`,
-            }}>
-            {themes.map((t, i) => (
-              <div
-                key={t.theme}
-                className="shrink-0 px-12 py-14 md:px-16 md:py-20"
-                style={{ width: `${100 / themes.length}%` }}>
-                <div className="relative">
-                  <div className="absolute -top-1.5 -left-1.5 h-5 w-5 border-t border-l border-gold/50 pointer-events-none" />
-                  <span
-                    className="font-display text-gold/70"
-                    style={{ fontSize: "clamp(3.4rem, 6vw, 5rem)", lineHeight: 1 }}>
-                    0{i + 1}
-                  </span>
-                  <div className="absolute top-1.5 -right-1.5 h-5 w-5 border-t border-r border-gold/50 pointer-events-none" />
-                </div>
-                <div className="mt-6 flex flex-wrap items-baseline gap-4">
-                  <h3 className="font-display text-[1.8rem] md:text-[2.3rem] text-foreground leading-snug">
-                    {t.theme}
-                  </h3>
-                  <span className="label-luxe !text-[0.62rem] text-gold/90">
-                    {t.n} avis mentionnent ce thème
-                  </span>
-                </div>
-                <p className="mt-4 text-muted-foreground text-[16px] md:text-[17px] font-light leading-[2]">
-                  {t.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* arrows */}
-        <button
-          type="button"
-          aria-label="Témoignage précédent"
-          onClick={() => go(-1)}
-          className="absolute left-2 top-1/2 -translate-y-1/2 hidden sm:inline-flex h-11 w-11 items-center justify-center border border-gold/60 bg-background/85 text-gold backdrop-blur-sm transition-all duration-200 hover:bg-gold hover:text-white active:scale-[0.94]">
-          <ChevronLeft className="h-4 w-4" />
-        </button>
-        <button
-          type="button"
-          aria-label="Témoignage suivant"
-          onClick={() => go(1)}
-          className="absolute right-2 top-1/2 -translate-y-1/2 hidden sm:inline-flex h-11 w-11 items-center justify-center border border-gold/60 bg-background/85 text-gold backdrop-blur-sm transition-all duration-200 hover:bg-gold hover:text-white active:scale-[0.94]">
-          <ChevronRight className="h-4 w-4" />
-        </button>
-
-        {/* dots */}
-        <div className="mt-8 flex items-center justify-center gap-3">
-          {themes.map((_, i) => (
-            <button
-              key={i}
-              type="button"
-              aria-label={`Aller au témoignage ${i + 1}`}
-              onClick={() => go(i > active ? 1 : -1)}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
-                i === active ? "w-9 bg-gold" : "w-4 bg-gold/35 hover:bg-gold/60"
-              }`} />
-          ))}
-        </div>
-
-        <p className="label-luxe !text-[0.62rem] mt-4 text-center text-foreground/40">
-          Glissez ou balayez pour naviguer
-        </p>
-      </div>
-    </div>
-  );
-}
 
 function Stars({ rating }: { rating: number }) {
   return (
@@ -328,9 +171,33 @@ export default function Reputation() {
               ))}
             </div>
           ) : (
-            /* Elegant empty state: no reviews yet on this new listing —
-               presented as a swipeable carousel (drag / swipe / arrows / dots) */
-            <ThemeCarousel themes={THEMES} />
+            /* Elegant empty state: no reviews yet on this new listing */
+            <div className="lg:col-span-8 flex flex-col gap-12">
+              {THEMES.map((t, i) => (
+                <div
+                  key={t.theme}
+                  className="reveal group flex items-start gap-7 border-b border-gold/30 pb-12 last:border-0 last:pb-0">
+                  <span
+                    className="font-display text-gold/80 shrink-0"
+                    style={{ fontSize: "clamp(2.8rem, 5vw, 4rem)", lineHeight: 1 }}>
+                    0{i + 1}
+                  </span>
+                  <div className="flex-1">
+                    <div className="flex flex-wrap items-baseline gap-4">
+                      <h3 className="font-display text-[1.7rem] md:text-[2rem] text-foreground leading-snug">
+                        {t.theme}
+                      </h3>
+                      <span className="label-luxe !text-[0.62rem] text-gold/90">
+                        {t.n} avis mentionnent ce thème
+                      </span>
+                    </div>
+                    <p className="mt-3 text-muted-foreground text-[16px] font-light leading-[1.95]">
+                      {t.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           )}
         </div>
       </div>
