@@ -64,7 +64,7 @@ export default function Contact() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Obtenir l'itinéraire vers OPTIMIST Jardins de Carthage"
-            className="reveal lg:col-span-7 group flex items-center justify-center gap-4 border border-gold bg-gold/10 px-10 py-5 text-[13px] tracking-[0.24em] uppercase text-gold transition-all duration-300 hover:bg-gold hover:text-white hover:shadow-[0_8px_32px_rgba(201,164,92,0.35)] active:scale-[0.98]">
+            className="reveal lg:col-span-7 group inline-flex w-auto items-center gap-3 self-start border border-gold bg-gold/10 px-6 py-3.5 text-[12px] tracking-[0.22em] uppercase text-gold transition-all duration-300 hover:bg-gold hover:text-white hover:shadow-[0_8px_24px_rgba(201,164,92,0.3)] active:scale-[0.98]">
             <Navigation className="h-4 w-4" />
             Obtenir l'itinéraire
             <span
