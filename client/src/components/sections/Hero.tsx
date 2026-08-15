@@ -5,7 +5,7 @@
  * (ivory serif line + gold italic script line), gold-rule "CARTHAGE · TUNISIE"
  * eyebrow, short subline, and dual CTAs (solid gold + outlined ghost).
  */
-import { ArrowDown } from "lucide-react";
+import { useReveal } from "@/pages/Home";
 
 const PORTRAIT_IMG = "/manus-storage/hero-portrait_5a0e738a.png";
 
@@ -25,7 +25,7 @@ export default function Hero() {
         <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-background to-transparent" />
       </div>
 
-      <div className="container relative z-10 flex min-h-[100svh] flex-col justify-center pt-24">
+      <div ref={useReveal()} className="container relative z-10 flex min-h-[100svh] flex-col justify-center pt-24">
         <div className="max-w-xl">
           {/* gold-rule eyebrow — mirrors the reference's rule + letter-spaced label */}
           <p className="reveal flex items-center gap-4 text-[13px] tracking-[0.28em] uppercase text-gold">
