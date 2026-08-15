@@ -11,7 +11,7 @@
  */
 import { useEffect, useRef, useState } from "react";
 
-const PORTRAIT_IMG = "/manus-storage/hero-portrait-face_e1aed79a.png";
+const PORTRAIT_IMG = "/manus-storage/hero-full-face_1f153e6b.png";
 
 /**
  * Staggered fade-in: elements start hidden and animate in sequence after the
@@ -68,7 +68,7 @@ export default function Hero() {
         <img
           src={PORTRAIT_IMG}
           alt="Homme portant des lunettes écaille chez OPTIMIST aux Jardins de Carthage"
-          className="absolute inset-y-0 right-0 h-full w-[40%] sm:w-[50%] md:w-[62%] object-cover object-[52%_22%] md:object-[62%_20%]"
+          className="absolute inset-y-0 right-0 h-full w-[48%] sm:w-[52%] md:w-[58%] object-cover object-[70%_center]"
         />
         {/* full-width dissolve: exact page background (oklch 0.90 0.015 85)
             opaque across most of the band, only dissolving on the far right
