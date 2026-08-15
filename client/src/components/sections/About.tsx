@@ -5,7 +5,7 @@
  */
 import { useReveal } from "@/pages/Home";
 
-const BOUTIQUE = "/manus-storage/boutique-interior_1e439c48.png";
+const BOUTIQUE = "/manus-storage/optimist-owner-frames_109eebc4.png";
 
 export default function About() {
   const ref = useReveal();
@@ -18,7 +18,7 @@ export default function About() {
             <div className="reveal gold-frame overflow-hidden">
               <img
                 src={BOUTIQUE}
-                alt="Intérieur de la boutique OPTIMIST"
+                alt="Montures solaires de créateurs en boutique OPTIMIST"
                 className="aspect-[3/4] w-full object-cover"
               />
             </div>

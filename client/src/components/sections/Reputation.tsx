@@ -146,7 +146,7 @@ export default function Reputation() {
               {REAL_REVIEWS.map((r) => (
                 <figure
                   key={r.name}
-                  className="reveal group relative border border-gold/30 bg-[oklch(0.87_0.016_85)] p-8 transition-colors duration-300 hover:border-gold/60">
+                  className="reveal group relative border border-gold/30 bg-[oklch(0.87_0.016_85)] p-8 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-gold/70 hover:shadow-[0_14px_40px_-12px_rgba(120,90,40,0.28)]">
                   <div className="absolute top-3 left-3 h-4 w-4 border-t border-l border-gold/40 pointer-events-none" />
                   <div className="absolute bottom-3 right-3 h-4 w-4 border-b border-r border-gold/40 pointer-events-none" />
                   <div className="flex items-center gap-4">

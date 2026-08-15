@@ -5,7 +5,7 @@
  */
 import { ArrowDown } from "lucide-react";
 
-const HERO_IMG = "/manus-storage/collection-optical_09aa9bee.png";
+const HERO_IMG = "/manus-storage/optimist-interior-arch_7e37aab6.png";
 
 export default function Hero() {
   return (
@@ -13,8 +13,8 @@ export default function Hero() {
       <div className="absolute inset-0">
         <img
           src={HERO_IMG}
-          alt="Lunettes haut de gamme sur marbre blanc"
-          className="h-full w-full object-cover object-[65%_center]"
+          alt="Façade de la boutique OPTIMIST aux Jardins de Carthage"
+          className="h-full w-full object-cover object-[50%_55%]"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[oklch(0.90_0.015_85)] via-[oklch(0.90_0.015_85)]/70 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent" />

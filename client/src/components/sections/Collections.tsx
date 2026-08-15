@@ -8,7 +8,7 @@
 import { useReveal } from "@/pages/Home";
 
 const SUNGLASSES = "/manus-storage/collection-sunglasses_2f54e5e4.png";
-const OPTICAL = "/manus-storage/collection-optical_09aa9bee.png";
+const OPTICAL = "/manus-storage/optimist-interior-arch_7e37aab6.png";
 
 const COLLECTIONS = [
   {
