@@ -57,17 +57,17 @@ export default function Marques() {
       <div className="container relative z-10">
         <div className="mb-16 grid items-end gap-8 md:grid-cols-2">
           <div>
-            <p className="label-luxe reveal">Les Maisons</p>
+            <p className="label-luxe reveal">Les Marques</p>
             <h2
               className="reveal mt-5 font-display gold-rule"
               style={{ fontSize: "clamp(2.4rem, 5vw, 4rem)", lineHeight: 1.08 }}>
-              Les maisons que
+              Les marques que
               <br />
               nous <em className="text-gold">servons.</em>
             </h2>
           </div>
           <p className="reveal max-w-md text-foreground/65 text-base font-light leading-[1.95]">
-            Une sélection exigeante de maisons internationales — de la
+            Une sélection exigeante de marques internationales — de la
             tradition artisanale italienne au classicisme new-yorkais. Chaque
             monture de l'écrin est choisie pour son savoir-faire, sa matière et
             son caractère.
@@ -93,7 +93,7 @@ export default function Marques() {
 
         <p className="reveal mt-10 text-center text-foreground/50 text-[13px] font-light leading-[1.8] italic">
           La sélection est renouvelée au fil des saisons — passez à la boutique
-          pour découvrir les nouveautés de la maison.
+          pour découvrir les nouveautés de la boutique.
         </p>
       </div>
     </section>

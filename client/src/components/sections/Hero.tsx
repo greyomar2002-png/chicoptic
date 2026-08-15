@@ -132,7 +132,7 @@ export default function Hero() {
             }`}
             style={{ transitionDelay: "320ms", transitionTimingFunction: "cubic-bezier(0.23,1,0.32,1)" }}>
             <a
-              href="#booking"
+              href="#reservation"
               className="inline-flex items-center gap-3 bg-gold px-8 py-4 text-[13px] tracking-[0.22em] uppercase text-white hover:bg-[oklch(0.48_0.07_78)] transition-colors duration-300">
               <span className="h-4 w-4 rounded-sm border border-white/70 inline-flex items-center justify-center text-[10px]">
                 ✦
@@ -142,7 +142,7 @@ export default function Hero() {
             <a
               href="#marques"
               className="border border-gold/60 px-8 py-4 text-[13px] tracking-[0.22em] uppercase text-foreground/80 hover:border-gold hover:text-gold transition-colors duration-300">
-              Découvrir les maisons
+              Découvrir les marques
             </a>
           </div>
         </div>

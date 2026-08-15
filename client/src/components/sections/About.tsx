@@ -26,7 +26,7 @@ export default function About() {
           </div>
 
           <div className="lg:col-span-6 lg:col-start-7">
-            <p className="label-luxe reveal">La Maison</p>
+            <p className="label-luxe reveal">Les Marques</p>
             <h2
               className="reveal mt-4 font-display text-foreground gold-rule"
               style={{ fontSize: "clamp(2.2rem, 4.5vw, 3.6rem)", lineHeight: 1.1 }}>

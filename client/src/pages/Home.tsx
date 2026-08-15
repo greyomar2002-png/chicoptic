@@ -9,7 +9,6 @@ import Header from "@/components/Header";
 import Hero from "@/components/sections/Hero";
 import Collections from "@/components/sections/Collections";
 import Services from "@/components/sections/Services";
-import About from "@/components/sections/About";
 import Reputation from "@/components/sections/Reputation";
 import Marques from "@/components/sections/Marques";
 import Booking from "@/components/sections/Booking";
@@ -25,7 +24,6 @@ export default function Home() {
         <Hero />
         <Collections />
         <Services />
-        <About />
         <Reputation />
         <Marques />
         <Booking />

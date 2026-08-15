@@ -12,7 +12,6 @@ const LOGO = "/manus-storage/logo-opt_461d86f0.png";
 const NAV = [
   { href: "#collections", label: "Collections" },
   { href: "#services", label: "Services" },
-  { href: "#maison", label: "La Maison" },
   { href: "#marques", label: "Les Marques" },
   { href: "#avis", label: "Avis" },
   { href: "#contact", label: "Contact" },
