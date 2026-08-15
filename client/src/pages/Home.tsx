@@ -24,8 +24,8 @@ export default function Home() {
         <Hero />
         <Collections />
         <Services />
-        <Reputation />
         <Marques />
+        <Reputation />
         <Booking />
         <Contact />
       </main>

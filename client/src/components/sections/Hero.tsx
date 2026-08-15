@@ -13,6 +13,15 @@ import { useEffect, useRef, useState } from "react";
 
 const PORTRAIT_IMG = "/manus-storage/hero-full-face_1f153e6b.png";
 
+/* Ken Burns: a very slow continuous zoom (40s, ease-in-out ping-pong) that
+   runs on the GPU via transform/opacity only — cinematic depth without
+   affecting layout. Anchored toward the face (62% horizontal, center). */
+const KENBURNS_CSS = `@keyframes kenburns { 0% { transform: scale(1); } 100% { transform: scale(1.13); } }`;
+const KENBURNS_STYLE: React.CSSProperties = {
+  animation: "kenburns 40s ease-in-out infinite alternate",
+  transformOrigin: "62% center",
+};
+
 /**
  * Staggered fade-in: elements start hidden and animate in sequence after the
  * page loads (each stage 80ms apart). As a fallback, an IntersectionObserver
@@ -68,7 +77,8 @@ export default function Hero() {
         <img
           src={PORTRAIT_IMG}
           alt="Homme portant des lunettes écaille chez OPTIMIST aux Jardins de Carthage"
-          className="absolute inset-y-0 right-0 h-full w-[48%] sm:w-[52%] md:w-[60%] object-cover object-[62%_center]"
+          className="absolute inset-y-0 right-0 h-full w-[48%] sm:w-[52%] md:w-[60%] object-cover object-[62%_center] kenburns"
+          style={KENBURNS_STYLE}
         />
         {/* full-width dissolve: exact page background (oklch 0.90 0.015 85)
             opaque across most of the band, only dissolving on the far right
