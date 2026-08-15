@@ -1,5 +1,5 @@
 /*
- * CHIC OPTIC — Home (single-page)
+ * OPTIMIST J CARTHAGE — Home (single-page)
  * Style: "Or & Velours" — ebony / champagne-gold / ivory, Cormorant Garamond
  * display + Jost body, gold hairlines with corner ornaments, letter-spaced
  * uppercase labels, editorial asymmetric layouts, slow fade+rise reveals.

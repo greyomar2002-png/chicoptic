@@ -1,5 +1,5 @@
 /*
- * CHIC OPTIC — Hero ("Galerie Blanche")
+ * OPTIMIST J CARTHAGE — Hero ("Galerie Blanche")
  * Style: bright white/ivory full-bleed light image, asymmetric text left in
  * deep anthracite, gold rules, Cormorant display, ivory → white gradient.
  */
@@ -37,7 +37,7 @@ export default function Hero() {
           <p className="reveal mt-7 max-w-md text-foreground/70 text-base font-light leading-relaxed">
             Lunettes de vue et solaires de créateurs, montures raffinées et
             expertise visuelle sur mesure — dans l'écrin lumineux de la
-            résidence Phénix, aux Jardins de Carthage.
+            résidence Venus, aux Jardins de Carthage.
           </p>
           <div className="reveal mt-10 flex flex-wrap items-center gap-6">
             <a

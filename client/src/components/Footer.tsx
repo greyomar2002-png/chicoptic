@@ -1,11 +1,11 @@
 /*
- * CHIC OPTIC — Footer ("Galerie Blanche")
- * Style: deep crème closing signature, restrained CO seal, gold hairline,
+ * OPTIMIST J Carthage — Footer ("Galerie Blanche")
+ * Style: deep crème closing signature, restrained OJ seal, gold hairline,
  * small caps links, maison closing line.
  */
-import { Facebook, Instagram, Phone, Send } from "lucide-react";
+import { MapPin, Phone } from "lucide-react";
 
-const LOGO = "/assets/images/logo-co.png";
+const LOGO = "/manus-storage/logo-opt_461d86f0.png";
 
 export default function Footer() {
   return (
@@ -15,11 +15,11 @@ export default function Footer() {
           <div className="gold-frame flex items-center gap-4 px-6 py-3">
             <img
               src={LOGO}
-              alt="Monogramme Chic Optic"
+              alt="Monogramme OPTIMIST"
               className="h-10 w-10 object-contain"
             />
             <span className="font-display text-xl tracking-[0.25em] text-foreground">
-              CHIC OPTIC
+              OPTIMIST
             </span>
           </div>
           <p className="label-luxe mt-4 !text-[0.62rem]">
@@ -28,46 +28,23 @@ export default function Footer() {
           <div className="mt-8 h-px w-24 bg-gold/50" />
           <div className="mt-8 flex flex-wrap items-center justify-center gap-8 text-[12px] tracking-[0.18em] uppercase">
             <a
-              href="tel:+21625904141"
+              href="tel:+21698410676"
               className="flex items-center gap-2 hover:text-gold transition-colors">
               <Phone className="h-3.5 w-3.5 text-gold" />
-              +216 25 904 141
-            </a>
-            <a
-              href="https://www.facebook.com/chicoptictunis"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 hover:text-gold transition-colors">
-              <Facebook className="h-3.5 w-3.5 text-gold" />
-              Facebook
-            </a>
-            <a
-              href="https://www.instagram.com/chicoptictunis"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 hover:text-gold transition-colors">
-              <Instagram className="h-3.5 w-3.5 text-gold" />
-              Instagram
-            </a>
-            <a
-              href="https://www.tiktok.com/@wissalgharbi_chicoptic"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 hover:text-gold transition-colors">
-              <Send className="h-3.5 w-3.5 text-gold" />
-              TikTok
+              +216 98 410 676
             </a>
             <a
               href="#contact"
               className="flex items-center gap-2 hover:text-gold transition-colors">
-              Résidence Phénix, Jardin de Carthage
+              <MapPin className="h-3.5 w-3.5 text-gold" />
+              Residence Venus, Jardin de Carthage
             </a>
           </div>
           <p className="mt-6 font-display text-lg italic text-foreground/60">
             « Votre vision, notre signature. »
           </p>
           <p className="mt-10 text-[11px] tracking-[0.14em] text-foreground/45">
-            © {new Date().getFullYear()} Chic Optic Jardin de Carthage. Tous
+            © {new Date().getFullYear()} OPTIMIST Jardins de Carthage. Tous
             droits réservés.
           </p>
         </div>

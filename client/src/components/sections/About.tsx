@@ -1,5 +1,5 @@
 /*
- * CHIC OPTIC — La Maison (About) — "Galerie Blanche"
+ * OPTIMIST J CARTHAGE — La Maison (About) — "Galerie Blanche"
  * Style: white gallery background, asymmetric split with tall portrait image,
  * gold vertical rule, editorial pull quote in Cormorant italic.
  */
@@ -18,7 +18,7 @@ export default function About() {
             <div className="reveal gold-frame overflow-hidden">
               <img
                 src={BOUTIQUE}
-                alt="Intérieur de la boutique Chic Optic"
+                alt="Intérieur de la boutique OPTIMIST"
                 className="aspect-[3/4] w-full object-cover"
               />
             </div>
@@ -39,7 +39,7 @@ export default function About() {
 
             <div className="reveal mt-8 space-y-6 text-muted-foreground text-[17px] font-light leading-[1.95]">
               <p>
-                Nichée dans la résidence Phénix, la maison Chic Optic associe le
+                Nichée dans la résidence Venus, la maison OPTIMIST associe le
                 savoir-faire de l'optique professionnelle à l'atmosphère d'une
                 galerie lumineuse : marbre clair, laiton poli, lumière naturelle
                 et un accueil que nos clients décrivent comme chaleureux et
@@ -59,7 +59,7 @@ export default function About() {
                 différence.
               </p>
               <cite className="label-luxe mt-5 block not-italic">
-                L'esprit Chic Optic — résumé des avis Google de nos clients
+                L'esprit OPTIMIST — résumé des avis Google de nos clients
               </cite>
             </blockquote>
           </div>

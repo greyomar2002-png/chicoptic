@@ -1,5 +1,5 @@
 /*
- * CHIC OPTIC — Les Marques ("Galerie Blanche")
+ * OPTIMIST J CARTHAGE — Les Marques ("Galerie Blanche")
  * Style: warm parchment background with crème interlude, gold-framed editorial
  * blocks, letter-spaced uppercase labels, monogram accents, letter-wordmark
  * brand entries in the manner of a haute-joaillerie catalogue.

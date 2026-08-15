@@ -1,5 +1,5 @@
 /*
- * CHIC OPTIC — Réputation
+ * OPTIMIST J CARTHAGE — Réputation
  * Style: ivory editorial page, framed stat card with corner ornaments,
  * large confident numerals, monogram watermark, real Google data only
  * (4.8/5 — 43 avis; thèmes agrégés, aucun témoignage inventé).
@@ -7,7 +7,7 @@
 import { Star } from "lucide-react";
 import { useReveal } from "@/pages/Home";
 
-const LOGO = "/assets/images/logo-co.png";
+const LOGO = "/manus-storage/logo-opt_461d86f0.png";
 
 export default function Reputation() {
   const ref = useReveal();

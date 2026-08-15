@@ -1,5 +1,5 @@
 /*
- * CHIC OPTIC — Réservation ("Galerie Blanche")
+ * OPTIMIST J CARTHAGE — Réservation ("Galerie Blanche")
  * Style: warm parchment background with crème interlude, gold-framed form
  * panel with corner ornaments, gold primary button, letter-spaced labels.
  * Booking flow: name and phone only — the boutique calls back to agree on
@@ -10,9 +10,9 @@ import { CalendarCheck, Check, Clock, MessageCircle, Phone } from "lucide-react"
 import { useReveal } from "@/pages/Home";
 import { toast } from "sonner";
 
-const BOOKING_PHONE = "+216 25 904 141";
+const BOOKING_PHONE = "+216 98 410 676";
 // WhatsApp booking line (boutique's real number)
-const WHATSAPP_NUMBER = "21625904141";
+const WHATSAPP_NUMBER = "21698410676";
 
 export default function Booking() {
   const ref = useReveal();
@@ -58,7 +58,7 @@ export default function Booking() {
                   <p className="reveal max-w-md text-foreground/65 text-base font-light leading-[1.95]">
             Laissez vos coordonnées — la maison vous contactera pour convenir
             ensemble de la date et du créneau. Un entretien
-            personnalisé, sans attente, dans la discrétion de la résidence Phénix.
+            personnalisé, sans attente, dans la discrétion de la résidence Venus.
           </p>
         </div>
 
@@ -153,7 +153,7 @@ export default function Booking() {
                   icon: Clock,
                   step: "Étape 03",
                   title: "Venez",
-                  desc: "Présentez-vous à la résidence Phénix — votre entretien vous attend.",
+                  desc: "Présentez-vous à la résidence Venus — votre entretien vous attend.",
                 },
               ].map((s) => (
                 <div key={s.step} className="bg-background p-8 transition-colors duration-300 hover:bg-[oklch(0.85_0.018_85)]">

@@ -1,13 +1,13 @@
 /*
- * CHIC OPTIC — Floating WhatsApp button ("Galerie Blanche")
+ * OPTIMIST J CARTHAGE — Floating WhatsApp button ("Galerie Blanche")
  * Style: fixed bottom-right, gold hairline ring around WhatsApp icon,
  * subtle fade-in, hover lift; matches the ivory/gold maison aesthetic.
  */
 import { useState } from "react";
 
-const WHATSAPP_NUMBER = "21625904141";
+const WHATSAPP_NUMBER = "21698410676";
 const DEFAULT_MESSAGE = encodeURIComponent(
-  "Bonjour Chic Optic, je souhaiterais obtenir plus d'informations."
+  "Bonjour OPTIMIST Jardins de Carthage, je souhaiterais obtenir plus d'informations."
 );
 const WA_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${DEFAULT_MESSAGE}`;
 

@@ -1,5 +1,5 @@
 /*
- * CHIC OPTIC — Collections ("Galerie Blanche")
+ * OPTIMIST J CARTHAGE — Collections ("Galerie Blanche")
  * Style: white gallery background, asymmetric editorial layout, gold-framed
  * images with corner ornaments, letter-spaced labels, staggered reveal.
  * First image now the dark slate sunglasses set (contrast moment), then the

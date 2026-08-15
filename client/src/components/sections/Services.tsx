@@ -1,12 +1,12 @@
 /*
- * CHIC OPTIC — Services ("Galerie Blanche")
+ * OPTIMIST J CARTHAGE — Services ("Galerie Blanche")
  * Style: crème interlude section (never ebony), white framed cards with gold
  * corner ornaments, anthracite headings, gold details, monogram watermark.
  */
 import { Eye, Glasses, ShieldCheck, Sparkles } from "lucide-react";
 import { useReveal } from "@/pages/Home";
 
-const LOGO = "/assets/images/logo-co.png";
+const LOGO = "/manus-storage/logo-opt_461d86f0.png";
 
 const SERVICES = [
   {

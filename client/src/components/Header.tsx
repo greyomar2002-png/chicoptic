@@ -1,5 +1,5 @@
 /*
- * CHIC OPTIC — Header ("Galerie Blanche")
+ * OPTIMIST J CARTHAGE — Header ("Galerie Blanche")
  * Style: light translucent bar with CO monogram seal, Cormorant wordmark in
  * anthracite, gold hairline on scroll.
  */
@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { CalendarCheck, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const LOGO = "/assets/images/logo-co.png";
+const LOGO = "/manus-storage/logo-opt_461d86f0.png";
 
 const NAV = [
   { href: "#collections", label: "Collections" },
@@ -40,12 +40,12 @@ export default function Header() {
         <a href="#" className="flex items-center gap-3">
           <img
             src={LOGO}
-            alt="Monogramme Chic Optic"
+            alt="Monogramme OPTIMIST"
             className="h-11 w-11 object-contain"
           />
           <span className="flex flex-col leading-none shrink-0">
             <span className="whitespace-nowrap font-display text-lg tracking-[0.18em] text-foreground/90 font-medium">
-              CHIC OPTIC
+              OPTIMIST
             </span>
             <span className="label-luxe mt-1 text-[0.55rem] text-gold">
               Jardins de Carthage

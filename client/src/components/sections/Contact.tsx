@@ -1,14 +1,14 @@
 /*
- * CHIC OPTIC — Contact ("Galerie Blanche")
+ * OPTIMIST J CARTHAGE — Contact ("Galerie Blanche")
  * Style: crème gallery background, gold-framed map, white contact cards with
  * corner ornaments, anthracite headings, confident legible copy.
- * Real data: Résidence Phénix, Jardin de Carthage, +216 25 904 141,
- * 36.8530459, 10.3028679.
+ * Real data: Residence Venus, Tunis 2046, +216 98 410 676,
+ * 36.8536248, 10.3016218.
  */
 import { Clock, MapPin, Phone } from "lucide-react";
 import { useReveal } from "@/pages/Home";
 
-const LOGO = "/assets/images/logo-co.png";
+const LOGO = "/manus-storage/logo-opt_461d86f0.png";
 
 export default function Contact() {
   const ref = useReveal();
@@ -38,7 +38,7 @@ export default function Contact() {
             </h2>
           </div>
           <p className="reveal max-w-md text-foreground/65 text-base font-light leading-[1.95]">
-            Résidence Phénix, Jardins de Carthage — un écrin lumineux au cœur du
+            Residence Venus, Jardins de Carthage — un écrin lumineux au cœur du
             quartier, à quelques minutes du centre de Tunis. Chaque essai est
             un rituel ; chaque visite, un plaisir.
           </p>
@@ -47,8 +47,8 @@ export default function Contact() {
         <div className="grid gap-10 lg:grid-cols-12">
           <div className="reveal gold-frame overflow-hidden lg:col-span-7">
             <iframe
-              title="Localisation Chic Optic Jardin de Carthage"
-              src="https://www.google.com/maps?q=36.8530459,10.3028679&z=16&output=embed"
+              title="Localisation OPTIMIST Jardins de Carthage"
+              src="https://www.google.com/maps?q=36.8536248,10.3016218&z=16&output=embed"
               className="h-[440px] w-full border-0"
               loading="lazy"
               allowFullScreen
@@ -61,18 +61,18 @@ export default function Contact() {
               {
                 icon: MapPin,
                 title: "Adresse",
-                lines: ["Résidence Phénix", "Jardin de Carthage", "1090, Tunisie"],
+                lines: ["Residence Venus", "Jardins de Carthage", "2046, Tunisie"],
               },
               {
                 icon: Phone,
                 title: "Téléphone",
-                lines: ["+216 25 904 141"],
-                href: "tel:+21625904141",
+                lines: ["+216 98 410 676"],
+                href: "tel:+21698410676",
               },
               {
                 icon: Clock,
                 title: "Horaires",
-                lines: ["Lundi – Samedi", "9h00 – 18h30"],
+                lines: ["Lundi – Samedi", "9h30 – 20h00", "Dimanche : fermé"],
               },
 
             ].map((c) => (
