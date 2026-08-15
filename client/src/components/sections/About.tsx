@@ -15,11 +15,11 @@ export default function About() {
       <div className="container">
         <div className="grid items-center gap-14 lg:grid-cols-12">
           <div className="relative lg:col-span-5">
-            <div className="reveal gold-frame overflow-hidden">
+            <div className="reveal gold-frame group overflow-hidden">
               <img
                 src={BOUTIQUE}
                 alt="Montures solaires de créateurs en boutique OPTIMIST"
-                className="aspect-[3/4] w-full object-cover"
+                className="aspect-[3/4] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
               />
             </div>
             <div className="absolute -bottom-6 -right-4 hidden h-24 w-24 border border-gold/40 lg:block" />
