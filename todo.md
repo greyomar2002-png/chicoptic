@@ -25,3 +25,8 @@
 - [ ] Generate 8 photographic brand cards (portrait style like the Skechers example: product shot + bold brand name at bottom) for Tom Ford, Ray-Ban, Moscot, Persol, Prada, Carolina Herrera, Guess, Tommy Hilfiger
 - [ ] Replace monogram logos in Marques.tsx with the photo cards, remove description text
 - [ ] Verify, checkpoint, push
+
+# Hero redesign — reference layout (Aug 15, 2026)
+- [ ] Generate cinematic portrait (man in tortoiseshell glasses, dark-warm tones, right side of hero) in OPTIMIST warm ivory/gold palette
+- [ ] Rebuild Hero.tsx: left column with gold-rule "CARTHAGE · TUNISIE" label, two-tone editorial headline ("Voyez la" ivory + "différence." gold italic), subline, two CTAs (filled gold + outlined); right column portrait photo
+- [ ] Verify, checkpoint, push, deliver
