@@ -13,14 +13,14 @@ export default function Hero() {
   return (
     <section className="relative overflow-hidden bg-background grain">
       {/* Right side: cinematic portrait bleeding to the edge */}
-      <div className="absolute inset-y-0 right-0 w-[62%]">
+      <div className="absolute inset-y-0 right-0 w-[40%] sm:w-[50%] md:w-[62%]">
         <img
           src={PORTRAIT_IMG}
           alt="Homme portant des lunettes écaille chez OPTIMIST aux Jardins de Carthage"
-          className="h-full w-full object-cover object-[70%_30%]"
+          className="h-full w-full object-cover object-[74%_34%] md:object-[70%_30%]"
         />
         {/* warm ivory fade so the photo merges with the page on the left */}
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/65 to-transparent md:via-background/85" />
         {/* bottom blend into next section */}
         <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-background to-transparent" />
       </div>
@@ -41,13 +41,13 @@ export default function Hero() {
             <em className="text-gold">différence.</em>
           </h1>
 
-          <p className="reveal mt-7 max-w-md text-foreground/70 text-base font-light leading-relaxed">
+          <p className="reveal mt-6 max-w-[40ch] text-foreground/70 text-[15px] font-light leading-relaxed sm:mt-7 sm:text-base">
             Une maison d'optique pour des montures choisies, personnelles, et
             faites pour être portées — dans l'écrin lumineux de la résidence
             Venus, aux Jardins de Carthage.
           </p>
 
-          <div className="reveal mt-10 flex flex-wrap items-center gap-5">
+          <div className="reveal mt-8 flex flex-wrap items-center gap-5 sm:mt-10">
             <a
               href="#booking"
               className="inline-flex items-center gap-3 bg-gold px-8 py-4 text-[13px] tracking-[0.22em] uppercase text-white hover:bg-[oklch(0.48_0.07_78)] transition-colors duration-300">
