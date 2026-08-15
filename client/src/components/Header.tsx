@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { CalendarCheck, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const LOGO = "/manus-storage/logo-opt_461d86f0.png";
+const LOGO = "/images/logo-opt.png";
 
 const NAV = [
   { href: "#collections", label: "Collections" },

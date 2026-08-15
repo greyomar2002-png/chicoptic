@@ -6,7 +6,7 @@
 import { Eye, Glasses, ShieldCheck, Sparkles } from "lucide-react";
 import { useReveal } from "@/pages/Home";
 
-const LOGO = "/manus-storage/logo-opt_461d86f0.png";
+const LOGO = "/images/logo-opt.png";
 
 const SERVICES = [
   {

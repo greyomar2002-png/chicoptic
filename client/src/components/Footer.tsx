@@ -5,7 +5,7 @@
  */
 import { Instagram, MapPin, Phone } from "lucide-react";
 
-const LOGO = "/manus-storage/logo-opt_461d86f0.png";
+const LOGO = "/images/logo-opt.png";
 
 export default function Footer() {
   return (

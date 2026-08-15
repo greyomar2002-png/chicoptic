@@ -11,35 +11,35 @@ import { useReveal } from "@/pages/Home";
 const BRANDS: { name: string; img: string }[] = [
   {
     name: "Tom Ford",
-    img: "/manus-storage/brand-tomford_d4607d2d.png",
+    img: "/images/brand-tomford.jpg",
   },
   {
     name: "Ray-Ban",
-    img: "/manus-storage/brand-rayban_b72f8e0b.png",
+    img: "/images/brand-rayban.jpg",
   },
   {
     name: "Moscot",
-    img: "/manus-storage/brand-moscot_8790a33e.png",
+    img: "/images/brand-moscot.jpg",
   },
   {
     name: "Persol",
-    img: "/manus-storage/brand-persol_a22738d3.png",
+    img: "/images/brand-persol.jpg",
   },
   {
     name: "Prada",
-    img: "/manus-storage/brand-prada_5eeac2ae.png",
+    img: "/images/brand-prada.jpg",
   },
   {
     name: "Carolina Herrera",
-    img: "/manus-storage/brand-carolinaherrera_59046d44.png",
+    img: "/images/brand-carolinaherrera.jpg",
   },
   {
     name: "Guess",
-    img: "/manus-storage/brand-guess_45d4cc17.png",
+    img: "/images/brand-guess.jpg",
   },
   {
     name: "Tommy Hilfiger",
-    img: "/manus-storage/brand-tommyhilfiger_abe39341.png",
+    img: "/images/brand-tommyhilfiger.jpg",
   },
 ];
 

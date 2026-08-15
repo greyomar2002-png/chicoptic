@@ -5,7 +5,7 @@
  */
 import { useReveal } from "@/pages/Home";
 
-const BOUTIQUE = "/manus-storage/optimist-owner-frames_109eebc4.png";
+const BOUTIQUE = "/images/optimist-owner-frames.jpg";
 
 export default function About() {
   const ref = useReveal();

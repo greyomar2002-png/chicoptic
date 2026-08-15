@@ -8,7 +8,7 @@
 import { Clock, MapPin, Navigation, Phone } from "lucide-react";
 import { useReveal } from "@/pages/Home";
 
-const LOGO = "/manus-storage/logo-opt_461d86f0.png";
+const LOGO = "/images/logo-opt.png";
 const PLACE_ID = "ChIJ23BVVQC14iIRfDvf38eQls4";
 const DIRECTIONS_URL = `https://www.google.com/maps/dir/?api=1&destination=36.8536248,10.3016218&destination_place_id=${PLACE_ID}`;
 const LISTING_URL =

@@ -11,7 +11,7 @@
  */
 import { useEffect, useRef, useState } from "react";
 
-const PORTRAIT_IMG = "/manus-storage/hero-full-face_1f153e6b.png";
+const PORTRAIT_IMG = "/images/hero-full-face.jpg";
 
 /* Ken Burns: an ultra-slow continuous zoom (70s, ease-in-out ping-pong) that
    runs on the GPU via transform only — cinematic depth without affecting
