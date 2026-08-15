@@ -14,12 +14,12 @@ type Brand = {
 };
 
 const BRAND_LOGOS: Record<string, string> = {
-  Persol: "/assets/images/logo-persol.png",
-  "ic! berlin": "/assets/images/logo-icberlin.png",
-  Lunor: "/assets/images/logo-lunor.png",
-  "Ray-Ban": "/assets/images/logo-rayban.png",
-  Kuboraum: "/assets/images/logo-kuboraum.png",
-  Mykita: "/assets/images/logo-mykita.png",
+  Persol: "/manus-storage/logo-persol_af1505eb.png",
+  "ic! berlin": "/manus-storage/logo-icberlin_0ada6054.png",
+  Lunor: "/manus-storage/logo-lunor_b046babd.png",
+  "Ray-Ban": "/manus-storage/logo-rayban_0af9cd90.png",
+  Kuboraum: "/manus-storage/logo-kuboraum_cdce3507.png",
+  Mykita: "/manus-storage/logo-mykita_b963637a.png",
 };
 
 const BRANDS: Brand[] = [

@@ -5,10 +5,13 @@
  * Real data: Residence Venus, Tunis 2046, +216 98 410 676,
  * 36.8536248, 10.3016218.
  */
-import { Clock, MapPin, Phone } from "lucide-react";
+import { Clock, MapPin, Navigation, Phone } from "lucide-react";
 import { useReveal } from "@/pages/Home";
 
 const LOGO = "/manus-storage/logo-opt_461d86f0.png";
+const PLACE_ID = "ChIJ23BVVQC14iIRfDvf38eQls4";
+const DIRECTIONS_URL = `https://www.google.com/maps/dir/?api=1&destination=36.8536248,10.3016218&destination_place_id=${PLACE_ID}`;
+const LISTING_URL = `https://www.google.com/maps/place/?q=place_id:${PLACE_ID}`;
 
 export default function Contact() {
   const ref = useReveal();
@@ -55,6 +58,21 @@ export default function Contact() {
               referrerPolicy="no-referrer-when-downgrade"
             />
           </div>
+
+          <a
+            href={DIRECTIONS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Obtenir l'itinéraire vers OPTIMIST Jardins de Carthage"
+            className="reveal lg:col-span-7 group flex items-center justify-center gap-4 border border-gold bg-gold/10 px-10 py-5 text-[13px] tracking-[0.24em] uppercase text-gold transition-all duration-300 hover:bg-gold hover:text-white hover:shadow-[0_8px_32px_rgba(201,164,92,0.35)] active:scale-[0.98]">
+            <Navigation className="h-4 w-4" />
+            Obtenir l'itinéraire
+            <span
+              aria-hidden="true"
+              className="inline-block translate-x-0 transition-transform duration-300 group-hover:translate-x-1.5">
+              →
+            </span>
+          </a>
 
           <div className="flex flex-col gap-px border border-gold/30 bg-gold/30 lg:col-span-5">
             {[

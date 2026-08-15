@@ -14,6 +14,7 @@ const NAV = [
   { href: "#services", label: "Services" },
   { href: "#maison", label: "La Maison" },
   { href: "#marques", label: "Les Marques" },
+  { href: "#avis", label: "Avis" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -53,7 +54,7 @@ export default function Header() {
           </span>
         </a>
 
-        <nav className="hidden md:flex items-center gap-9">
+        <nav className="hidden md:flex items-center gap-7">
           {NAV.map((item) => (
             <a
               key={item.href}
