@@ -13,12 +13,13 @@ import { useEffect, useRef, useState } from "react";
 
 const PORTRAIT_IMG = "/manus-storage/hero-full-face_1f153e6b.png";
 
-/* Ken Burns: a very slow continuous zoom (40s, ease-in-out ping-pong) that
-   runs on the GPU via transform/opacity only — cinematic depth without
-   affecting layout. Anchored toward the face (62% horizontal, center). */
-const KENBURNS_CSS = `@keyframes kenburns { 0% { transform: scale(1); } 100% { transform: scale(1.13); } }`;
+/* Ken Burns: an ultra-slow continuous zoom (70s, ease-in-out ping-pong) that
+   runs on the GPU via transform only — cinematic depth without affecting
+   layout. Scale range kept to 1 → 1.07 (vs 1.13 before) so the motion is
+   barely perceptible per second, and anchored toward the face (62% center). */
+const KENBURNS_CSS = `@keyframes kenburns { 0% { transform: scale(1); } 100% { transform: scale(1.07); } }`;
 const KENBURNS_STYLE: React.CSSProperties = {
-  animation: "kenburns 40s ease-in-out infinite alternate",
+  animation: "kenburns 70s ease-in-out infinite alternate",
   transformOrigin: "62% center",
 };
 
